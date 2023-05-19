@@ -1,35 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect, useState } from 'react';
+import SpotifyWebApi from 'spotify-web-api-js';
+import useAuthentication from './Hooks/useAuthentication';
+import { SpotifyAuthnticationUrl, setAccessToken } from './Services/auth';
+import { useDispatch } from 'react-redux';
+import { authActions } from './Store/authSlice';
+import Login from './Pages/Login/Login';
 
-function App() {
-  const [count, setCount] = useState(0)
 
+const spotifyApi = new SpotifyWebApi();
+
+const App = () => {
+
+
+  const dispatch = useDispatch()
+  const { isLoggedIn } = useAuthentication();
+
+  console.log(isLoggedIn);
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      const token = setAccessToken();
+      if (token) {
+        dispatch(authActions.setAccessToken(token));
+        localStorage.setItem('token', token)
+      }
+      console.log("token", token);
+    }
+  }, []);
+
+
+
+
+  console.log("isLoggedIn " + isLoggedIn);
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div>
+      {isLoggedIn ? (
+        <div>
+          <h2>Welcome, Honey</h2>
+          <p>Email: </p>
+          {spotifyApi.getAccessToken()}
+          <button >Logout</button>
+        </div>
+      ) : (
+        <Login />
+      )}
+    </div>
+  );
+};
 
-export default App
+export default App;
