@@ -1,5 +1,5 @@
 import React from 'react'
-import { SpotifyAuthnticationUrl } from '../../Services/auth'
+import { SpotifyAuthnticationUrl } from '../../Services/spotify'
 
 const Login = () => {
     return (

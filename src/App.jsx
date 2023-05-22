@@ -1,50 +1,40 @@
-import React, { useEffect, useState } from 'react';
-import SpotifyWebApi from 'spotify-web-api-js';
-import useAuthentication from './Hooks/useAuthentication';
-import { SpotifyAuthnticationUrl, setAccessToken } from './Services/auth';
-import { useDispatch } from 'react-redux';
-import { authActions } from './Store/authSlice';
+import React, { useEffect } from 'react';
+import { getAccessToken, spotifyApi } from './Services/spotify';
+import { useDispatch, useSelector } from 'react-redux';
+import { authActions, fetchUserData } from './Store/authSlice';
 import Login from './Pages/Login/Login';
+import Home from './Pages/Home/Home';
 
-
-const spotifyApi = new SpotifyWebApi();
 
 const App = () => {
 
-
+  const { accessToken, user } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
-  const { isLoggedIn } = useAuthentication();
 
-  console.log(isLoggedIn);
 
   useEffect(() => {
-    if (!isLoggedIn) {
-      const token = setAccessToken();
+    if (!accessToken) {
+      const token = getAccessToken();
       if (token) {
         dispatch(authActions.setAccessToken(token));
-        localStorage.setItem('token', token)
       }
-      console.log("token", token);
     }
-  }, []);
+    spotifyApi.setAccessToken(accessToken);
+    dispatch(fetchUserData());
+    console.log(user, spotifyApi.getAccessToken);
+  }, [accessToken]);
 
 
 
 
-  console.log("isLoggedIn " + isLoggedIn);
   return (
-    <div>
-      {isLoggedIn ? (
-        <div>
-          <h2>Welcome, Honey</h2>
-          <p>Email: </p>
-          {spotifyApi.getAccessToken()}
-          <button >Logout</button>
-        </div>
+    <React.Fragment>
+      {accessToken ? (
+        <Home />
       ) : (
         <Login />
       )}
-    </div>
+    </React.Fragment>
   );
 };
 

@@ -1,6 +1,6 @@
 import SpotifyWebApi from 'spotify-web-api-js';
 
-const spotifyApi = new SpotifyWebApi();
+export const spotifyApi = new SpotifyWebApi();
 
 
 const clientId = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
@@ -18,27 +18,15 @@ export const SpotifyAuthnticationUrl = `${authEndpoint}?client_id=${clientId}&re
 
 
 
-export const setAccessToken = () => {
+export const getAccessToken = () => {
     const hash = window.location.hash
     if (hash) {
-
         let token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
         window.location.hash = ""
-        spotifyApi.setAccessToken(token);
-        localStorage.setItem("token", token)
+        localStorage.setItem("token", token);
         return token;
-
     }
 };
 
 
-export const fetchUserProfile = async () => {
-    try {
-        const response = await spotifyApi.getMe();
-        return response;
-    } catch (error) {
-        console.error('Error:', error);
-        throw new Error('Failed to fetch user profile');
-    }
-};
 
