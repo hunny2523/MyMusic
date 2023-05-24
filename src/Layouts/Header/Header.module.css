@@ -26,7 +26,7 @@
   align-items: center;
   padding-inline: 3rem;
   padding-block: 1.5rem;
-  /* position: fixed; */
+  position: sticky;
+  top: 0;
   box-sizing: border-box;
-  width: 100%;
 }

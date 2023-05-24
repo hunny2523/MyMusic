@@ -22,11 +22,11 @@ const Home = () => {
 
 
     return (
-        <Grid container direction="row" >
-            <Grid item xs={12} lg={2} sm={3}>
+        <Grid container direction="row" maxHeight="100vh">
+            <Grid item xs={12} lg={2} sm={3} maxHeight="100vh">
                 <Sidebar />
             </Grid>
-            <Grid item xs={12} lg={10} sm={9} >
+            <Grid item xs={12} lg={10} sm={9} sx={{ overflow: "auto" }} maxHeight="100vh" >
                 <Header />
                 <Main />
             </Grid>

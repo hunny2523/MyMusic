@@ -5,11 +5,11 @@ import '../../assets/Styles/common.css'
 export default function ShowCategory({ data }) {
 
     const handleClick = (id) => {
-        console.log(data.id);
+        console.log(id);
     }
 
     return (
-        <div className='cardMargin'>
+        <div className='cardMargin' onClick={() => handleClick(data.id)}>
             {console.log(data + "show")}
             <CardUI name={data.name} images={data.icons[0]} handleClick={handleClick} />
         </div>
