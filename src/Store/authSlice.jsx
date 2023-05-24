@@ -6,7 +6,6 @@ export const fetchUserData = createAsyncThunk(
     async () => {
         try {
             const user = await fetchUserProfile();
-            console.log("---------------");
             return user;
         } catch (error) {
             console.error('Error fetching user data:', error);

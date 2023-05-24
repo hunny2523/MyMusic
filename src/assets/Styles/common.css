@@ -1,0 +1,20 @@
+.CardHorizontalContainer {
+  display: flex;
+  flex-direction: row;
+  padding-left: 2em;
+  overflow: auto;
+}
+
+.cardMargin {
+  margin-right: 3em;
+  margin-block: 1em;
+}
+
+.d-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container {
+  margin-top: 4.5em;
+}

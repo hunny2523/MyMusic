@@ -1,24 +1,19 @@
 import React from 'react'
-import { spotifyApi } from '../../Services/spotify'
-import MyPlaylist from '../../Components/MyPlaylist/MyPlaylist';
+import NewReleases from '../../Components/NewReleases/NewReleases';
+
+import FeaturedPlaylist from '../../Components/FeaturedPlaylist/FeaturedPlaylist';
+import Categories from '../../Components/Categories/Categories';
+import '../../assets/Styles/common.css'
 
 const Main = () => {
 
-    // spotifyApi.getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE').then(
-    //     function (data) {
-    //         console.log('Artist albums', data);
-    //     },
-    //     function (err) {
-    //         console.error(err);
-    //     }
-    // );
-
-
-
     return (
-        <div>{
-            <MyPlaylist />
-        }</div>
+        <div className='main-container'>
+
+            <Categories />
+            <FeaturedPlaylist />
+            <NewReleases />
+        </div>
     )
 }
 

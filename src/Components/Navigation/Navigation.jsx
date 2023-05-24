@@ -23,7 +23,7 @@ const NavigationItem = ({ icon, primary }) => {
         <ListItem disablePadding>
             <ListItemButton >
                 <ListItemIcon className={styles.navigationIcons}>{icon}</ListItemIcon>
-                <ListItemText primary={primary} />
+                <ListItemText style={{ whiteSpace: 'nowrap' }} primary={primary} />
             </ListItemButton>
         </ListItem>
     );

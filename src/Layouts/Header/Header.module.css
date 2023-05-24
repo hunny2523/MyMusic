@@ -19,10 +19,14 @@
 }
 
 .header {
-  height: 2rem;
+  height: 4.5rem;
   display: flex;
+  background-color: white;
   justify-content: space-between;
   align-items: center;
   padding-inline: 3rem;
   padding-block: 1.5rem;
+  /* position: fixed; */
+  box-sizing: border-box;
+  width: 100%;
 }

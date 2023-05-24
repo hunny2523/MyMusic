@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@200;300;400;500;600&family=Roboto:wght@300;400;500&display=swap");
+
+.heading {
+  letter-spacing: 1px;
+  font-family: "Inter", sans-serif;
+  color: rgb(0, 2, 34);
+  padding: 0;
+  margin: 0;
+  margin-left: 2rem;
+  font-weight: bold;
+}

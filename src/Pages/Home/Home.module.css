@@ -1,0 +1,9 @@
+.sidebarContainer {
+  height: 100vh;
+  width: max-content;
+}
+
+.homePageContainer {
+  display: flex;
+  flex-direction: row;
+}
