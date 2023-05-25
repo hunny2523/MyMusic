@@ -36,6 +36,7 @@ a:hover {
 
 
 
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -72,4 +73,38 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+}
+
+:root {
+  /* Dark theme */
+  --primary-color-dark: #2e2e2e;
+  --secondary-color-dark: #555555;
+  --text-color-dark: #ffffff;
+  /* ... other color variables for dark theme ... */
+
+  /* Light theme */
+  --primary-color-light: #ffffff;
+  --secondary-color-light: #dddddd;
+  --text-color-light: #333333;
+  /* ... other color variables for light theme ... */
+}
+
+/* Selectors for dark theme */
+.dark-theme {
+  --primary-color: var(--primary-color-dark);
+  --secondary-color: var(--secondary-color-dark);
+  --text-color: var(--text-color-dark);
+}
+
+/* Selectors for light theme */
+.light-theme {
+  --primary-color: var(--primary-color-light);
+  --secondary-color: var(--secondary-color-light);
+  --text-color: var(--text-color-light);
+}
+
+/* Usage example */
+.container {
+  color: var(--text-color);
+  background-color: var(--primary-color);
 }

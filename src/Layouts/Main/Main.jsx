@@ -1,18 +1,26 @@
 import React from 'react'
-import NewReleases from '../../Components/NewReleases/NewReleases';
-
-import FeaturedPlaylist from '../../Components/FeaturedPlaylist/FeaturedPlaylist';
-import Categories from '../../Components/Categories/Categories';
 import '../../assets/Styles/common.css'
+import { Route, Routes } from 'react-router-dom';
+import Home from '../../Container/Home/Home';
+import Playlist from '../../Container/Playlist/Playlist';
+import NotFound from '../../Container/NotFound/NotFound';
+import Album from '../../Container/Album/Album';
 
 const Main = () => {
 
     return (
         <div className='main-container'>
+            <Routes>
 
-            <Categories />
-            <FeaturedPlaylist />
-            <NewReleases />
+                <Route path="/" element={<Home />} />
+                <Route path="/playlist/:id" element={<Playlist />} />
+                <Route path="/album/:id" element={<Album />} />
+                <Route path="*" element={<NotFound />} />
+
+            </Routes>
+
+
+
         </div>
     )
 }

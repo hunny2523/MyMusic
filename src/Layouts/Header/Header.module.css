@@ -1,5 +1,3 @@
-/* styles.module.css */
-
 .searchBarContainer {
   display: flex;
   align-items: center;
@@ -26,7 +24,9 @@
   align-items: center;
   padding-inline: 3rem;
   padding-block: 1.5rem;
-  /* position: fixed; */
+  position: sticky;
+  top: 0;
   box-sizing: border-box;
-  width: 100%;
+  box-shadow: 0 3px 5px rgba(177, 177, 177, 0.3);
+  z-index: 9999;
 }

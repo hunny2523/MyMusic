@@ -5,7 +5,7 @@ import '../../assets/Styles/common.css'
 export default function ShowAlbum({ data }) {
 
     const handleClick = (id) => {
-        console.log(data.id);
+        console.log(id);
     }
 
     return (

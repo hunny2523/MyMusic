@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './authSlice';
 import browseReducer from './browseSlice';
+import currentTrackReducer from './CurrentTrackSlice'
 
 const store = configureStore({
     reducer: {
         auth: authReducer,
-        browse: browseReducer
+        browse: browseReducer,
+        currentTrack: currentTrackReducer
     },
 });
 

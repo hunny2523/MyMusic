@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid } from '@mui/material';
 import Header from '../../Layouts/Header/Header';
 import Main from '../../Layouts/Main/Main';
@@ -8,7 +8,17 @@ import { fetchCategories, fetchFeaturedPlaylists, fetchNewReleases } from '../..
 
 
 
-const Home = () => {
+const Body = () => {
+
+
+
+    const [theme, setTheme] = useState('light');
+
+    const handleThemeChange = () => {
+        setTheme(theme === 'light' ? 'dark' : 'light');
+    };
+
+
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -22,11 +32,11 @@ const Home = () => {
 
 
     return (
-        <Grid container direction="row" >
-            <Grid item xs={12} lg={2} sm={3}>
+        <Grid container direction="row" maxHeight="100vh" className={`container ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
+            <Grid item xs={12} lg={2} sm={3} height="100vh">
                 <Sidebar />
             </Grid>
-            <Grid item xs={12} lg={10} sm={9} >
+            <Grid item xs={12} lg={10} sm={9} sx={{ overflow: "auto" }} maxHeight="100vh" >
                 <Header />
                 <Main />
             </Grid>
@@ -35,4 +45,4 @@ const Home = () => {
 
 };
 
-export default Home;
+export default Body;

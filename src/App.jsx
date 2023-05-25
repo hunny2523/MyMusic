@@ -2,14 +2,14 @@ import React, { useEffect } from 'react';
 import { getAccessToken, spotifyApi } from './Services/spotify';
 import { useDispatch, useSelector } from 'react-redux';
 import { authActions, fetchUserData } from './Store/authSlice';
-import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
+import Body from './Pages/Body/Body';
 
 
 
 const App = () => {
 
-  const { accessToken } = useSelector((state) => state.auth)
+  const accessToken = useSelector((state) => state.auth.accessToken)
   const dispatch = useDispatch()
 
 
@@ -34,7 +34,7 @@ const App = () => {
   return (
     <React.Fragment>
       {accessToken ? (
-        <Home />
+        <Body />
       ) : (
         <Login />
       )}
