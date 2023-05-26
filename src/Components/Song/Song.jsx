@@ -39,8 +39,10 @@ const Song = () => {
     const togglePlay = () => {
         console.log(isPlaying);
         if (!audio) {
-            // audio = new Audio(trackData?.preview_url);
-            // audio.addEventListener('ended', handleSongEnded);
+            console.log("here");
+            audio = new Audio(trackData.preview_url);
+            console.log(audio + trackData.preview_url);
+            audio.addEventListener('ended', handleSongEnded);
         }
 
         if (isPlaying) {
@@ -66,50 +68,48 @@ const Song = () => {
 
 
     return (
-        <Card sx={{ display: 'flex' }}>
-            {
-                trackData && (
-                    <>
 
-                        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+        trackData && (
+            <>
 
-                            <CardContent sx={{ flex: '1 0 auto' }}>
-                                <Typography component="div" variant="h5">
-                                    {trackData.name}
-                                </Typography>
-                                <Typography variant="subtitle1" color="text.secondary" component="div">
-                                    {trackData.artists[0].name}
-                                </Typography>
-                            </CardContent>
+                <Card sx={{ width: "95%", height: "95%", margin: "10px auto" }}>
+                    <CardMedia
+                        component="img"
+                        sx={{ maxWidth: "100%" }}
+                        image={trackData?.album?.images[0]?.url}
+                        alt={trackData.name}
+                    />
+                    <CardContent sx={{ flex: '1 0 auto' }}>
+                        <Typography component="div" variant="h5">
+                            {trackData.name}
+                        </Typography>
+                        <Typography variant="subtitle1" color="text.secondary" component="div">
+                            {trackData.artists[0].name}
+                        </Typography>
+                    </CardContent>
 
 
-                            <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-                                <IconButton aria-label="previous">
-                                    {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
-                                </IconButton>
-                                <IconButton aria-label="play/pause" onClick={togglePlay}>
-                                    {isPlaying ? (
-                                        <PauseCircleOutline sx={{ height: 38, width: 38 }} />
-                                    ) : (
-                                        <PlayArrowIcon sx={{ height: 38, width: 38 }} />
-                                    )}
-                                </IconButton>
-                                <IconButton aria-label="next">
-                                    {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
-                                </IconButton>
-                                <audio style={{ display: "none" }} src={trackData.preview_url} controls={isPlaying}></audio>
-                            </Box>
-                        </Box>
-                        <CardMedia
-                            component="img"
-                            sx={{ width: 151 }}
-                            image={trackData?.album?.images[0]?.url}
-                            alt={trackData.name}
-                        />
-                    </>
-                )
-            }
-        </Card>
+                    <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
+                        <IconButton aria-label="previous">
+                            {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
+                        </IconButton>
+                        <IconButton aria-label="play/pause" onClick={togglePlay}>
+                            {!isPlaying ? (
+                                <PauseCircleOutline sx={{ height: 38, width: 38 }} />
+                            ) : (
+                                <PlayArrowIcon sx={{ height: 38, width: 38 }} />
+                            )}
+                        </IconButton>
+                        <IconButton aria-label="next">
+                            {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
+                        </IconButton>
+                        <audio style={{ display: "none" }} src={trackData.preview_url} controls={isPlaying}></audio>
+                    </Box>
+                </Card>
+
+            </>
+        )
+
     );
 }
 

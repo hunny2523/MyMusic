@@ -5,6 +5,8 @@ import Home from '../../Container/Home/Home';
 import Playlist from '../../Container/Playlist/Playlist';
 import NotFound from '../../Container/NotFound/NotFound';
 import Album from '../../Container/Album/Album';
+import Search from '../Search/Search';
+
 
 const Main = () => {
 
@@ -15,6 +17,7 @@ const Main = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/playlist/:id" element={<Playlist />} />
                 <Route path="/album/:id" element={<Album />} />
+                <Route path="/search" element={<Search />} />
                 <Route path="*" element={<NotFound />} />
 
             </Routes>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { spotifyApi } from '../../Services/spotify';
 import '../../assets/Styles/common.css'
@@ -12,12 +12,15 @@ import Song from '../../Components/Song/Song';
 
 
 const Playlist = () => {
-
+    const ref = useRef(null);
 
     const dispatch = useDispatch()
+
     const handleTrack = (id) => {
         console.log("clicked" + id);
-        dispatch(currentTrackActions.addTrackId(id))
+
+        dispatch(currentTrackActions.addTrackId(id));
+        ref.current.scrollIntoView({ behavior: 'smooth' });
     }
 
 
@@ -49,6 +52,7 @@ const Playlist = () => {
     };
 
 
+
     return (
         <>
             {data && (
@@ -66,7 +70,7 @@ const Playlist = () => {
                         </div>
                     </div>
 
-                    <div className="d-flex-row">
+                    <div className="d-flex-row" ref={ref}>
                         <div className={styles.tracksContainer}>
 
                             {data?.tracks?.items?.map((track) => {

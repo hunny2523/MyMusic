@@ -15,9 +15,9 @@
   flex-direction: column;
 }
 
-.main-container {
-  margin-top: 1em;
-}
+/* .main-container {
+  margin-left: 1.5em;
+} */
 
 .d-flex-row {
   display: flex;

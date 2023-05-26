@@ -14,6 +14,7 @@ const App = () => {
 
 
   useEffect(() => {
+    console.log(accessToken);
     if (!accessToken) {
       const token = getAccessToken();
       if (token) {
@@ -23,6 +24,7 @@ const App = () => {
 
     if (accessToken) {
       spotifyApi.setAccessToken(accessToken);
+      console.log(spotifyApi.getAccessToken());
       dispatch(fetchUserData());
     }
 
