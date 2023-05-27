@@ -66,7 +66,7 @@ const browseSlice = createSlice({
             state.loading = false;
             state.error = null;
         });
-        // Handle all fetch thunks rejected
+
         builder.addMatcher(
             (action) => action.type.startsWith('browse/fetch') && action.type.endsWith('/rejected'),
             (state, action) => {
@@ -74,7 +74,7 @@ const browseSlice = createSlice({
                 state.error = action.error.message;
             }
         );
-        // Handle all fetch thunks pending
+
         builder.addMatcher(
             (action) => action.type.startsWith('browse/fetch') && action.type.endsWith('/pending'),
             (state) => {

@@ -16,7 +16,7 @@ export default function CardUI({ name, description, handleClick, images, type, a
 
             <CardMedia
                 component="img"
-                sx={{ width: "12em", height: "12em", borderRadius: "15px" }}
+                sx={{ width: "12em", height: "12em", borderRadius: "15px", boxShadow: "0px 0px 6px 5px rgb(196, 196, 196)" }}
                 image={images.url}
                 alt={name}
             />
@@ -24,7 +24,7 @@ export default function CardUI({ name, description, handleClick, images, type, a
 
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <CardContent >
-                    <Typography component="div" variant="title">
+                    <Typography component="div" variant="title" sx={{ maxWidth: "12em" }} >
                         {name}
                     </Typography>
                     {/* <Typography variant="body" color="text.secondary" component="div" textOverflow="ellipsis">

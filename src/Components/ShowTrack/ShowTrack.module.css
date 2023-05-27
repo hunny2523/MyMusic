@@ -1,0 +1,41 @@
+.trackRowContainer {
+  display: flex;
+  margin: 1em;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  box-shadow: 1px 1px 8px rgb(214, 214, 214);
+  flex: 2 1;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.trackRowContainer:hover {
+  background-color: rgb(240, 239, 239);
+}
+
+.trackName {
+  font-size: 1em;
+  padding: 0;
+}
+
+.artistName {
+  color: grey;
+  font-size: small;
+}
+
+.TextWrapper {
+  margin-inline: 1em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.TimeHeartWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+}
+
+.TimeHeartWrapper p {
+  padding-inline: "30px";
+}

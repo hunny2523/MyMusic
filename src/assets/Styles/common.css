@@ -15,6 +15,10 @@
   flex-direction: column;
 }
 
-.main-container {
-  /* margin-top: 4.5em; */
+/* .main-container {
+  margin-left: 1.5em;
+} */
+
+.d-flex-row {
+  display: flex;
 }
