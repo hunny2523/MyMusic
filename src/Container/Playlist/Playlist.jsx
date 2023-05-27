@@ -40,7 +40,8 @@ const Playlist = () => {
     }, [])
 
     const containerStyle = {
-        background: ` linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 69%), url(${data?.images[0]?.url}) no-repeat`,
+        background: `linear-gradient(to right, var(--primary-color) 0%, rgba(255, 255, 255, 0) 69%), url(${data?.images[0]?.url}) no-repeat`,
+
         backgroundSize: "cover",
         width: "40vw",
         height: "100%",

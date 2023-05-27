@@ -17,6 +17,7 @@ const Song = () => {
 
     let audio = null;
     const track = useSelector((state) => state.currentTrack.trackID)
+
     console.log(track);
     const [trackData, settrackData] = useState(null)
     // const [audioData, settrackData] = useState(null)

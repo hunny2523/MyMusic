@@ -3,9 +3,10 @@
   align-items: center;
   width: 90%;
   max-width: 30rem;
-  border: 1px solid rgb(192, 192, 192);
+  border: 1px solid var(--secondary-color);
   border-radius: 50px;
   padding: 5px 10px;
+  margin-inline: 1em;
 }
 
 .searchBarContainer input {
@@ -19,14 +20,33 @@
 .header {
   height: 4.5rem;
   display: flex;
-  background-color: white;
+  background-color: var(--primary-color);
   justify-content: space-between;
   align-items: center;
-  padding-inline: 3rem;
+  padding-inline: 2.5rem;
   padding-block: 1.5rem;
   position: sticky;
   top: 0;
   box-sizing: border-box;
-  box-shadow: 0 3px 5px rgba(177, 177, 177, 0.3);
+  box-shadow: 0 3px 5px var(--secondary-color);
   z-index: 9999;
+}
+
+.headerContent {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.headerIcons {
+  display: flex;
+}
+
+@media screen and (max-width: 426px) {
+  .header {
+    padding-inline: 0.5em;
+  }
+  .headerIcons {
+    display: none;
+  }
 }
