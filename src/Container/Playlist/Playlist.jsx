@@ -42,14 +42,14 @@ const Playlist = () => {
     const containerStyle = {
         background: `linear-gradient(to right, var(--primary-color) 0%, rgba(255, 255, 255, 0) 69%), url(${data?.images[0]?.url}) no-repeat`,
 
-        backgroundSize: "cover",
-        width: "40vw",
-        height: "100%",
+        backgroundSize: "50%",
         // border: "solid 1px #000",
         backdropFilter: "blur(10px)",
         border: "none",
         // objectPosition: "center",
-        // backgroundPosition: "center"
+        backgroundPosition: "right",
+        backgroundColor: "var(--primary-color)"
+
     };
 
 
@@ -57,39 +57,40 @@ const Playlist = () => {
     return (
         <>
             {data && (
-
-                <div className="d-flex-column">
-
-                    <div className={styles.playlistHeader}>
-                        <div className={styles.headertext}>
-                            <h1 className={styles.playlistNameHeading}>{data.name}</h1>
-                            <h2 >{data.description}</h2>
-                            <h3>{data?.tracks?.total} Songs</h3>
-                            <h3>Followed By {data?.followers?.total}</h3>
-                        </div>
-                        <div style={containerStyle}>
-                        </div>
+                <>
+                    <div className={styles.headerImage}>
+                        <img src={data?.images[0]?.url} className={styles.headerImage} />
                     </div>
+                    <div className="d-flex-column">
 
-                    <div className="d-flex-row" ref={ref}>
-                        <div className={styles.tracksContainer}>
-
-                            {data?.tracks?.items?.map((track) => {
-                                return (
-                                    <React.Fragment key={track.track.id}>
-                                        <ShowTrack data={track.track} handleTrack={handleTrack} />
-                                    </React.Fragment>
-                                );
-                            })}
-
+                        <div className={styles.playlistHeader} style={containerStyle}>
+                            <div className={styles.headertext}>
+                                <h1 className={styles.playlistNameHeading}>{data.name}</h1>
+                                <h2 >{data.description}</h2>
+                                <h3>{data?.tracks?.total} Songs</h3>
+                                <h3>Followed By {data?.followers?.total}</h3>
+                            </div>
                         </div>
-                        <div style={{ flex: 1 }}>
-                            <Song />
+
+                        <div className="d-flex-row" ref={ref}>
+                            <div className={styles.tracksContainer}>
+
+                                {data?.tracks?.items?.map((track) => {
+                                    return (
+                                        <React.Fragment key={track.track.id}>
+                                            <ShowTrack data={track.track} handleTrack={handleTrack} />
+                                        </React.Fragment>
+                                    );
+                                })}
+
+                            </div>
+                            <div style={{ flex: 1 }}>
+                                <Song />
+                            </div>
                         </div>
+
                     </div>
-
-
-                </div>
+                </>
             )}
         </>
     )
