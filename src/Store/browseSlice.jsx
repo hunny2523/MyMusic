@@ -10,7 +10,6 @@ export const fetchNewReleases = createAsyncThunk('browse/fetchNewReleases', asyn
 
 export const fetchFeaturedPlaylists = createAsyncThunk('browse/fetchFeaturedPlaylists', async () => {
     const response = await getFeaturedPlaylists();
-    console.log("returning response" + response);
     return response;
 });
 
@@ -19,10 +18,7 @@ export const fetchCategories = createAsyncThunk('browse/fetchCategories', async 
     return response;
 });
 
-export const fetchCategoryPlaylists = createAsyncThunk('browse/fetchCategoryPlaylists', async (categoryId) => {
-    const response = await getCategoryPlaylists(categoryId);
-    return response;
-});
+
 
 
 // Define the initial state
@@ -30,7 +26,6 @@ const initialState = {
     newReleases: [],
     featuredPlaylists: [],
     categories: [],
-    categoryPlaylists: [],
     loading: false,
     error: null,
 };
@@ -51,12 +46,6 @@ const browseSlice = createSlice({
         // Handle fetchFeaturedPlaylists fulfilled
         builder.addCase(fetchFeaturedPlaylists.fulfilled, (state, action) => {
             state.featuredPlaylists = action.payload;
-            state.loading = false;
-            state.error = null;
-        });
-        // Handle fetchCategoryPlaylists fulfilled
-        builder.addCase(fetchCategoryPlaylists.fulfilled, (state, action) => {
-            state.categoryPlaylists = action.payload;
             state.loading = false;
             state.error = null;
         });

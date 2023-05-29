@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
+import { Box } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -16,7 +16,7 @@ export default function CardUI({ name, description, handleClick, images, type, a
 
             <CardMedia
                 component="img"
-                sx={{ width: "12em", height: "12em", borderRadius: "15px", boxShadow: "0px 0px 6px 5px rgb(196, 196, 196)" }}
+                sx={{ width: "12em", height: "12em", borderRadius: "15px", boxShadow: "0px 0px 6px 5px var(--primary-color)" }}
                 image={images.url}
                 alt={name}
             />

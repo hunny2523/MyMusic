@@ -8,8 +8,10 @@ import CardUI from '../../Components/Card/CardUI';
 import { useDispatch } from 'react-redux';
 import { currentTrackActions } from '../../Store/CurrentTrackSlice';
 import Song from '../../Components/Song/Song';
-
-
+import { createTheme } from '@mui/material';
+// import styled from 'styled-components'
+import styled from '@emotion/styled'
+// import {StyledComponent} from '@emotion/styled'
 
 const Playlist = () => {
     const ref = useRef(null);
@@ -39,19 +41,32 @@ const Playlist = () => {
 
     }, [])
 
-    const containerStyle = {
-        background: ` linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 69%), url(${data?.images[0]?.url}) no-repeat`,
-        backgroundSize: "cover",
-        width: "40vw",
-        height: "100%",
-        // border: "solid 1px #000",
-        backdropFilter: "blur(10px)",
-        border: "none",
-        // objectPosition: "center",
-        // backgroundPosition: "center"
-    };
+    // const containerStyle = {
+    //     background: `linear-gradient(to right, var(--primary-color) 0%, rgba(255, 255, 255, 0) 69%), url(${data?.images[0]?.url}) no-repeat`,
+    //     backgroundSize: "50%",
+    //     backgroundPosition: "right",
+    //     backgroundColor: "var(--primary-color)",
+    //     backdropFilter: "blur(10px)",
+    //     border: "none",
+
+    // };
+
+    const Container = styled.div`
+        background: linear-gradient(to right, var(--primary-color) 0%, rgba(255, 255, 255, 0) 69%), url(${props => props.imageUrl}) no-repeat;
+        background-size: 50%;
+        background-position: right;
+        background-color: var(--primary-color);
+        backdrop-filter: blur(10px);
+        border: none;
+   
+        @media screen and (max-width: 768px) {
+            background: linear-gradient(to top, #9907facc, var(--primary-color)), url(${props => props.imageUrl}) no-repeat;
+
+            background-size: 100%;
 
 
+        }
+      `;
 
     return (
         <>
@@ -59,16 +74,14 @@ const Playlist = () => {
 
                 <div className="d-flex-column">
 
-                    <div className={styles.playlistHeader}>
+                    <Container className={styles.playlistHeader} imageUrl={data?.images[0]?.url} >
                         <div className={styles.headertext}>
                             <h1 className={styles.playlistNameHeading}>{data.name}</h1>
                             <h2 >{data.description}</h2>
                             <h3>{data?.tracks?.total} Songs</h3>
                             <h3>Followed By {data?.followers?.total}</h3>
                         </div>
-                        <div style={containerStyle}>
-                        </div>
-                    </div>
+                    </Container>
 
                     <div className="d-flex-row" ref={ref}>
                         <div className={styles.tracksContainer}>
@@ -86,7 +99,6 @@ const Playlist = () => {
                             <Song />
                         </div>
                     </div>
-
 
                 </div>
             )}

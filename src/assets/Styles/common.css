@@ -22,3 +22,7 @@
 .d-flex-row {
   display: flex;
 }
+
+.darkModeIcon {
+  color: var(--text-color);
+}

@@ -6,12 +6,12 @@ import Playlist from '../../Container/Playlist/Playlist';
 import NotFound from '../../Container/NotFound/NotFound';
 import Album from '../../Container/Album/Album';
 import Search from '../Search/Search';
-
+import styles from './Main.module.css'
 
 const Main = () => {
 
     return (
-        <div className='main-container'>
+        <div className={styles.mainContainer}>
             <Routes>
 
                 <Route path="/" element={<Home />} />

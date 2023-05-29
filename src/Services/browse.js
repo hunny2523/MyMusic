@@ -56,3 +56,5 @@ export const getCategoryPlaylists = async (id) => {
         console.error('Error occurred while fetching new releases:', error);
     }
 };
+
+

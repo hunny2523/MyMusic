@@ -7,9 +7,11 @@ import Body from './Pages/Body/Body';
 
 
 
+export const audioElement = new Audio();
+
 const App = () => {
 
-  const accessToken = useSelector((state) => state.auth.accessToken)
+  const accessToken = useSelector((state) => state.auth.accessToken);
   const dispatch = useDispatch()
 
 

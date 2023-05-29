@@ -4,14 +4,15 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  box-shadow: 1px 1px 8px rgb(214, 214, 214);
+  box-shadow: 1px 1px 8px var(--primary-color);
   flex: 2 1;
   cursor: pointer;
   border-radius: 3px;
+  background-color: var(--primary-color);
 }
 
 .trackRowContainer:hover {
-  background-color: rgb(240, 239, 239);
+  background-color: var(--secondary-color);
 }
 
 .trackName {
@@ -20,7 +21,7 @@
 }
 
 .artistName {
-  color: grey;
+  /* color: var(--text-color); */
   font-size: small;
 }
 

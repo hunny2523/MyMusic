@@ -1,22 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { Grid } from '@mui/material';
+import React, { useContext, useEffect, useState } from 'react';
+import { Grid, Hidden } from '@mui/material';
 import Header from '../../Layouts/Header/Header';
 import Main from '../../Layouts/Main/Main';
 import Sidebar from '../../Layouts/Sidebar/Sidebar';
 import { useDispatch } from 'react-redux';
 import { fetchCategories, fetchFeaturedPlaylists, fetchNewReleases } from '../../Store/browseSlice';
-
+import { ThemeContext } from '../../Context/ThemeContext';
 
 
 const Body = () => {
-
-
-
-    const [theme, setTheme] = useState('light');
-
-    const handleThemeChange = () => {
-        setTheme(theme === 'light' ? 'dark' : 'light');
-    };
 
 
     const dispatch = useDispatch()
@@ -27,20 +19,21 @@ const Body = () => {
         dispatch(fetchCategories())
     }, [dispatch])
 
-
-
-
+    const { theme } = useContext(ThemeContext);
 
     return (
         <Grid container direction="row" maxHeight="100vh" className={`container ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
-            <Grid item xs={12} lg={2} sm={3} height="100vh">
-                <Sidebar />
-            </Grid>
-            <Grid item xs={12} lg={10} sm={9} sx={{ overflow: "auto" }} maxHeight="100vh" >
+            <Hidden smDown>
+                <Grid item lg={2} md={3} sm={3.5} height="100vh">
+                    <Sidebar />
+                </Grid>
+            </Hidden>
+            <Grid item xs={12} md={9} lg={10} sm={8.5} sx={{ overflow: "auto" }} maxHeight="100vh">
                 <Header />
                 <Main />
             </Grid>
-        </Grid >
+        </Grid>
+
     );
 
 };

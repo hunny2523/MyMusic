@@ -1,0 +1,17 @@
+.myMusicText {
+  padding: 8px 16px;
+  padding-left: 2.1rem;
+}
+.navigationIcons {
+  justify-content: center;
+}
+
+.active {
+  background-color: var(--secondary-color);
+}
+
+.navlink {
+  display: block;
+  color: var(--text-color);
+  text-decoration: none;
+}
