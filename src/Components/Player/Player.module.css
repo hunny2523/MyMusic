@@ -1,0 +1,12 @@
+.playerContainer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: var(--brand-color);
+  color: var(--text-color);
+  justify-content: space-between;
+  height: 7vh;
+  box-shadow: -1px 0px 3px 4px var(--secondary-color);
+}

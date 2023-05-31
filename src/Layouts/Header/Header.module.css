@@ -15,10 +15,11 @@
   padding: 5px 10px;
   outline: none;
   width: 100%;
+  color: var(--text-color);
 }
 
 .header {
-  height: 4.5rem;
+  height: 9vh;
   display: flex;
   background-color: var(--primary-color);
   justify-content: space-between;

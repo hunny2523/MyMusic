@@ -6,6 +6,9 @@ import Sidebar from '../../Layouts/Sidebar/Sidebar';
 import { useDispatch } from 'react-redux';
 import { fetchCategories, fetchFeaturedPlaylists, fetchNewReleases } from '../../Store/browseSlice';
 import { ThemeContext } from '../../Context/ThemeContext';
+import Player from '../../Components/Player/Player';
+import ScrollToTopButton from '../../Layouts/ScrollToTop/ScrollToTop';
+
 
 
 const Body = () => {
@@ -32,6 +35,7 @@ const Body = () => {
                 <Header />
                 <Main />
             </Grid>
+            <Player />
         </Grid>
 
     );

@@ -3,14 +3,14 @@ import { useParams } from 'react-router-dom'
 import { spotifyApi } from '../../Services/spotify';
 import '../../assets/Styles/common.css'
 import styles from './Playlist.module.css'
-import ShowTrack from '../../Components/ShowTrack/ShowTrack';
 import CardUI from '../../Components/Card/CardUI';
 import { useDispatch } from 'react-redux';
 import { currentTrackActions } from '../../Store/CurrentTrackSlice';
-import Song from '../../Components/Song/Song';
+import Song from '../../Components/Player/Player';
 import { createTheme } from '@mui/material';
 // import styled from 'styled-components'
 import styled from '@emotion/styled'
+import TrackList from '../../Components/TrackList/TrackList';
 // import {StyledComponent} from '@emotion/styled'
 
 const Playlist = () => {
@@ -60,8 +60,8 @@ const Playlist = () => {
         border: none;
    
         @media screen and (max-width: 768px) {
-            background: linear-gradient(to top, #9907facc, var(--primary-color)), url(${props => props.imageUrl}) no-repeat;
-
+            background: linear-gradient(0deg, var(--shadow-color), var(--shadow-color)), url(${props => props.imageUrl}) no-repeat;
+    
             background-size: 100%;
 
 
@@ -88,16 +88,16 @@ const Playlist = () => {
 
                             {data?.tracks?.items?.map((track) => {
                                 return (
-                                    <React.Fragment key={track.track.id}>
-                                        <ShowTrack data={track.track} handleTrack={handleTrack} />
+                                    <React.Fragment key={track.track.id} >
+                                        <TrackList data={track.track} handleTrack={handleTrack} />
                                     </React.Fragment>
                                 );
                             })}
 
                         </div>
-                        <div style={{ flex: 1 }}>
+                        {/* <div style={{ flex: 1 }}>
                             <Song />
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>

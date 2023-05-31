@@ -14,7 +14,6 @@
 
 .playlistNameHeading {
   font-size: 3.5em;
-  text-shadow: 1px 1px 5px #e4e4e4;
 }
 
 .headertext h2 {
@@ -54,4 +53,8 @@
   .headertext {
     width: 100%;
   }
+}
+
+.trackListWrapper {
+  margin: 1em;
 }

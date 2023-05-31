@@ -1,6 +1,6 @@
-import { Avatar, Box, Typography } from '@mui/material'
 import React, { Fragment } from 'react'
 import { useSelector } from 'react-redux'
+import { Avatar, Box, Typography } from '@mui/material'
 
 const Profile = () => {
 

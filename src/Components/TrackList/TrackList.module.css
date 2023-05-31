@@ -1,9 +1,9 @@
 .trackRowContainer {
   display: flex;
-  margin: 1em;
   align-items: center;
   justify-content: space-between;
   padding: 10px;
+  margin: 0.2em;
   box-shadow: 1px 1px 8px var(--primary-color);
   flex: 2 1;
   cursor: pointer;
