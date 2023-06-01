@@ -13,19 +13,19 @@ export const sidebarLabels = {
             {
                 id: 2,
                 name: "Explore NEW",
-                path: "/newReleases",
+                path: "/NewReleases",
                 icon: <NewReleasesOutlined className="darkModeIcon" />,
             },
             {
                 id: 3,
                 name: "Recently Played",
-                path: "recentlyPlayed",
+                path: "RecentlyPlayed",
                 icon: <AccessAlarmOutlined className="darkModeIcon" />,
             },
             {
                 id: 4,
                 name: "My PlayList",
-                path: "myPlaylist",
+                path: "MyPlaylist",
                 icon: <QueueMusic className="darkModeIcon" />,
             },
         ],

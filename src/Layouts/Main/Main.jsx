@@ -9,6 +9,9 @@ import Search from '../Search/Search';
 import styles from './Main.module.css'
 import Category from '../../Container/Category/Category';
 import ScrollToTopButton from '../ScrollToTop/ScrollToTop';
+import FeaturedPlaylist from '../../Components/FeaturedPlaylist/FeaturedPlaylist';
+import Categories from '../../Components/Categories/Categories';
+import NewReleases from '../../Components/NewReleases/NewReleases';
 
 const Main = () => {
     const scrollableRef = useRef(null)
@@ -19,6 +22,9 @@ const Main = () => {
 
                 <Route path="/" element={<Home />} />
                 <Route path="/playlist/:id" element={<Playlist />} />
+                <Route path="/FeatuedPlaylists" element={<FeaturedPlaylist />} />
+                <Route path="/NewReleases" element={<NewReleases />} />
+                <Route path="/allCategories" element={<Categories />} />
                 <Route path="/album/:id" element={<Album />} />
                 <Route path="/search" element={<Search />} />
                 <Route path="/category/:id" element={<Category />} />

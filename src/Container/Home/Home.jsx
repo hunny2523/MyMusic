@@ -7,9 +7,9 @@ import NewReleases from '../../Components/NewReleases/NewReleases'
 const Home = () => {
     return (
         <>
-            <Categories />
-            <FeaturedPlaylist />
-            <NewReleases />
+            <Categories atHomePage="true" />
+            <FeaturedPlaylist atHomePage="true" />
+            <NewReleases atHomePage="true" />
         </>
     )
 }
