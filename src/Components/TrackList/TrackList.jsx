@@ -1,9 +1,11 @@
 import { Avatar } from '@mui/material'
 import React, { Fragment, useEffect } from 'react'
-import styles from './ShowTrack.module.css'
+import styles from './TrackList.module.css'
 import { FavoriteBorder, FavoriteOutlined } from '@mui/icons-material'
-import { useDispatch } from 'react-redux'
-const ShowTrack = ({ data, handleTrack }) => {
+import { formatDuration } from '../../Utils/Helper'
+
+const TrackList = ({ data, handleTrack }) => {
+
 
 
     return (
@@ -31,7 +33,7 @@ const ShowTrack = ({ data, handleTrack }) => {
 
             <div className={styles.TimeHeartWrapper}>
 
-                <p >{data.duration_ms} </p>
+                <p >{formatDuration(data.duration_ms)} </p>
                 <FavoriteBorder />
 
             </div>
@@ -39,4 +41,4 @@ const ShowTrack = ({ data, handleTrack }) => {
     )
 }
 
-export default ShowTrack
+export default TrackList

@@ -1,21 +1,11 @@
 import React from 'react';
 import {
     List,
-    ListItem,
     ListItemButton,
     ListItemIcon,
     ListItemText,
-    MenuItem,
-    MenuList,
     Typography
 } from '@mui/material';
-// import {
-//     HomeOutlined,
-//     CollectionsBookmarkOutlined,
-//     Person2Outlined,
-//     AccessAlarmOutlined,
-//     InsertDriveFileOutlined
-// } from '@mui/icons-material';
 import styles from './Navigation.module.css';
 import { NavLink } from 'react-router-dom';
 

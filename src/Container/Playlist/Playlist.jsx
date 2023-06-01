@@ -3,13 +3,15 @@ import { useParams } from 'react-router-dom'
 import { spotifyApi } from '../../Services/spotify';
 import '../../assets/Styles/common.css'
 import styles from './Playlist.module.css'
-import ShowTrack from '../../Components/ShowTrack/ShowTrack';
 import CardUI from '../../Components/Card/CardUI';
 import { useDispatch } from 'react-redux';
 import { currentTrackActions } from '../../Store/CurrentTrackSlice';
-import Song from '../../Components/Song/Song';
-
-
+import Song from '../../Components/Player/Player';
+import { createTheme } from '@mui/material';
+// import styled from 'styled-components'
+import styled from '@emotion/styled'
+import TrackList from '../../Components/TrackList/TrackList';
+// import {StyledComponent} from '@emotion/styled'
 
 const Playlist = () => {
     const ref = useRef(null);
@@ -39,58 +41,63 @@ const Playlist = () => {
 
     }, [])
 
-    const containerStyle = {
-        background: `linear-gradient(to right, var(--primary-color) 0%, rgba(255, 255, 255, 0) 69%), url(${data?.images[0]?.url}) no-repeat`,
+    // const containerStyle = {
+    //     background: `linear-gradient(to right, var(--primary-color) 0%, rgba(255, 255, 255, 0) 69%), url(${data?.images[0]?.url}) no-repeat`,
+    //     backgroundSize: "50%",
+    //     backgroundPosition: "right",
+    //     backgroundColor: "var(--primary-color)",
+    //     backdropFilter: "blur(10px)",
+    //     border: "none",
 
-        backgroundSize: "50%",
-        // border: "solid 1px #000",
-        backdropFilter: "blur(10px)",
-        border: "none",
-        // objectPosition: "center",
-        backgroundPosition: "right",
-        backgroundColor: "var(--primary-color)"
+    // };
 
-    };
-
-
+    const Container = styled.div`
+        background: linear-gradient(to right, var(--primary-color) 0%, rgba(255, 255, 255, 0) 69%), url(${props => props.imageUrl}) no-repeat;
+        background-size: 50%;
+        background-position: right;
+        background-color: var(--primary-color);
+        backdrop-filter: blur(10px);
+        border: none;
+   
+        @media screen and (max-width: 768px) {
+            background: linear-gradient(0deg, var(--overlay-color), var(--overlay-color)), url(${props => props.imageUrl}) no-repeat;
+            background-size: "cover";
+        }
+      `;
 
     return (
         <>
             {data && (
-                <>
-                    <div className={styles.headerImage}>
-                        <img src={data?.images[0]?.url} className={styles.headerImage} />
-                    </div>
-                    <div className="d-flex-column">
 
-                        <div className={styles.playlistHeader} style={containerStyle}>
-                            <div className={styles.headertext}>
-                                <h1 className={styles.playlistNameHeading}>{data.name}</h1>
-                                <h2 >{data.description}</h2>
-                                <h3>{data?.tracks?.total} Songs</h3>
-                                <h3>Followed By {data?.followers?.total}</h3>
-                            </div>
+                <div className="d-flex-column">
+
+                    <Container className={styles.playlistHeader} imageUrl={data?.images[0]?.url} >
+                        <div className={styles.headertext}>
+                            <h1 className={styles.playlistNameHeading}>{data.name}</h1>
+                            <h2 >{data.description}</h2>
+                            <h3>{data?.tracks?.total} Songs</h3>
+                            <h3>Followed By {data?.followers?.total}</h3>
                         </div>
+                    </Container>
 
-                        <div className="d-flex-row" ref={ref}>
-                            <div className={styles.tracksContainer}>
+                    <div className="d-flex-row" ref={ref}>
+                        <div className={styles.tracksContainer}>
 
-                                {data?.tracks?.items?.map((track) => {
-                                    return (
-                                        <React.Fragment key={track.track.id}>
-                                            <ShowTrack data={track.track} handleTrack={handleTrack} />
-                                        </React.Fragment>
-                                    );
-                                })}
+                            {data?.tracks?.items?.map((track) => {
+                                return (
+                                    <React.Fragment key={track.track.id} >
+                                        <TrackList data={track.track} handleTrack={handleTrack} />
+                                    </React.Fragment>
+                                );
+                            })}
 
-                            </div>
-                            <div style={{ flex: 1 }}>
-                                <Song />
-                            </div>
                         </div>
-
+                        {/* <div style={{ flex: 1 }}>
+                            <Song />
+                        </div> */}
                     </div>
-                </>
+
+                </div>
             )}
         </>
     )

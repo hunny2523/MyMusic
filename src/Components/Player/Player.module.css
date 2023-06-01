@@ -1,0 +1,76 @@
+.playerContainer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: var(--brand-color);
+  color: var(--text-color);
+
+  height: 9vh;
+  padding-inline: 1em;
+  box-shadow: -1px 0px 3px 4px var(--secondary-color);
+}
+.playerContainer div {
+  align-items: center;
+}
+.PlayerImg {
+  margin: 1em;
+}
+.AvtarNameWrapper {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  flex: 1.2;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.ProgressControlsWrapper {
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex: 2;
+}
+.DurationFavouriteWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+}
+.artistName {
+  white-space: nowrap;
+  font-size: smaller;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 15em;
+}
+
+@media screen and (max-width: 769px) {
+  .artistName {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .playerContainer {
+    padding-inline: 0px;
+  }
+  .progressBarDiv {
+    display: none;
+  }
+  .ProgressControlsWrapper {
+    flex: 0.5;
+    order: 3;
+  }
+  .AvtarNameWrapper {
+    flex: 2.5;
+  }
+  .DurationFavouriteWrapper {
+    flex: 0.5;
+  }
+  .DurationFavouriteWrapper p {
+    display: none;
+  }
+}

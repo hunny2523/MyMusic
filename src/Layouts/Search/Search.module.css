@@ -1,4 +1,11 @@
-.categoriesWrapper {
+/* .categoriesWrapper {
   display: flex;
   flex-wrap: wrap;
+  padding-top: 0.5em;
 }
+
+@media screen and (max-width: 426px) {
+  .categoriesWrapper {
+    justify-content: center;
+  }
+} */

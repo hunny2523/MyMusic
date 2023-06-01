@@ -1,0 +1,34 @@
+.cardImg {
+  width: 11em;
+  height: 11em;
+  border-radius: 10px;
+  box-shadow: 0px 0px 6px 4px var(--shadow-color);
+}
+
+.CardText {
+  white-space: nowrap;
+  width: 11em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 10px;
+}
+
+@media screen and (max-width: 769px) {
+  .cardImg {
+    width: 9em;
+    height: 9em;
+  }
+  .CardText {
+    width: 9em;
+  }
+}
+
+@media screen and (max-width: 1441px) and (min-width: 769px) {
+  .cardImg {
+    width: 9.1em;
+    height: 9.1em;
+  }
+  .CardText {
+    width: 9.1em;
+  }
+}

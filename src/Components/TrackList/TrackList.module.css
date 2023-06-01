@@ -1,11 +1,16 @@
 .trackRowContainer {
   display: flex;
-  margin: 1em;
   align-items: center;
   justify-content: space-between;
   padding: 10px;
+<<<<<<< HEAD:src/Components/ShowTrack/ShowTrack.module.css
   box-shadow: 1px 1px 8px var(--primary-color);
   flex: 2 1;
+=======
+  margin: 0.2em;
+  box-shadow: 1px 1px 8px var(--primary-color);
+
+>>>>>>> 9441ec0ead4041de247979e188727c187a15994b:src/Components/TrackList/TrackList.module.css
   cursor: pointer;
   border-radius: 3px;
   background-color: var(--primary-color);

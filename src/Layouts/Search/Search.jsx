@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { spotifyApi } from '../../Services/spotify';
 import ShowCategory from '../../Components/ShowCategory/ShowCategory';
-import styles from './Search.module.css'
+import '../../assets/Styles/common.css'
 import ShowPlaylist from '../../Components/ShowPlaylist/ShowPlaylist';
 const Search = () => {
     const searchQuery = useSelector((state) => state.search.searchQuery);
@@ -28,9 +28,9 @@ const Search = () => {
     }, [searchQuery]);
 
     return (
-        <div>
+        <>
             {data ? (
-                <div className={styles.categoriesWrapper}>
+                <div className="verticalCardWrapper">
                     {
                         data?.playlists?.items.map((playlist) => {
                             if (playlist.type === "playlist") {
@@ -45,13 +45,13 @@ const Search = () => {
 
 
             ) : (
-                <div className={styles.categoriesWrapper}>
+                <div className="verticalCardWrapper">
                     {categories?.items?.map((category) => {
                         return <ShowCategory key={category.id} data={category} />
                     })}
                 </div>
             )}
-        </div>
+        </>
     );
 };
 
