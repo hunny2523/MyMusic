@@ -2,12 +2,23 @@
   display: flex;
   flex-direction: row;
   padding-left: 2em;
+  padding-bottom: 0.5em;
   overflow: auto;
 }
+
+.CardHorizontalContainer::-webkit-scrollbar {
+  display: none;
+}
+
+/*
+.CardHorizontalContainer:hover {
+  overflow-x: auto;
+} */
 
 .cardMargin {
   margin-right: 3em;
   margin-block: 1em;
+  cursor: pointer;
 }
 
 .d-flex-column {
@@ -25,4 +36,11 @@
 
 .darkModeIcon {
   color: var(--text-color);
+}
+
+@media screen and (max-width: 769px) {
+  .cardMargin {
+    margin-right: 2em;
+    margin-block: 1em;
+  }
 }

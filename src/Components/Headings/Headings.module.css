@@ -1,11 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Acme&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@200;300;400;500;600&family=Roboto:wght@300;400;500&display=swap");
 
+.headingWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-inline: 2em;
+  margin-top: 0.8em;
+}
+
 .heading {
   letter-spacing: 1px;
-  font-family: "Inter", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: var(--text-color);
-  padding: 0;
-  margin: 0;
-  margin-left: 2rem;
-  font-weight: bold;
+  font-size: 1.2em;
+  font-weight: bolder;
+}
+
+.showAllLink {
+  color: var(--text-color2);
+}
+
+@media screen and (max-width: 769px) {
+  .heading {
+    font-size: 1em;
+    font-weight: bold;
+  }
 }

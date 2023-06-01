@@ -8,6 +8,7 @@ import { fetchCategories, fetchFeaturedPlaylists, fetchNewReleases } from '../..
 import { ThemeContext } from '../../Context/ThemeContext';
 import Player from '../../Components/Player/Player';
 import ScrollToTopButton from '../../Layouts/ScrollToTop/ScrollToTop';
+import NavbarFooter from '../../Layouts/NavbarFooter/NavbarFooter';
 
 
 
@@ -35,6 +36,9 @@ const Body = () => {
                 <Header />
                 <Main />
             </Grid>
+            <Hidden smUp>
+                <NavbarFooter />
+            </Hidden>
             <Player />
         </Grid>
 

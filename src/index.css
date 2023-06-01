@@ -77,21 +77,23 @@ button {
 
 :root {
   /* Dark theme */
-  --primary-color-dark: #2e2e2e;
-  --secondary-color-dark: #363636;
+  --primary-color-dark: #232323;
+  --secondary-color-dark: #2c2b2b;
   --secondary-color-dark2: #6b6b6b;
   --brand-color-dark: #9c7c8b;
   --text-color-dark: #ffffff;
-  --shadow-color-dark: rgba(0, 0, 0, 0.7);
+  --text-color-dark2: #dbdbdb;
+  --shadow-color-dark: rgb(47, 47, 47);
   /* ... other color variables for dark theme ... */
 
   /* Light theme */
   --primary-color-light: #ffffff;
-  --secondary-color-light: #f3f3f3;
+  --secondary-color-light: #fafafa;
   --secondary-color-light2: #c0c0c0;
   --brand-color-light: #e8d1dc;
   --text-color-light: #333333;
-  --shadow-color-light: rgba(255, 255, 255, 0.7);
+  --text-color-light2: #444444;
+  --shadow-color-light: rgba(226, 226, 226, 0.7);
   /* ... other color variables for light theme ... */
 }
 
@@ -101,6 +103,7 @@ button {
   --secondary-color: var(--secondary-color-dark);
   --secondary-color2: var(--secondary-color-dark2);
   --text-color: var(--text-color-dark);
+  --text-color2: var(--text-color-dark2);
   --brand-color: var(--brand-color-dark);
   --shadow-color: var(--shadow-color-dark);
 }
@@ -111,6 +114,7 @@ button {
   --secondary-color: var(--secondary-color-light);
   --secondary-color2: var(--secondary-color-light2);
   --text-color: var(--text-color-light);
+  --text-color2: var(--text-color-light2);
   --brand-color: var(--brand-color-light);
   --shadow-color: var(--shadow-color-light);
 }

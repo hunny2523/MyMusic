@@ -6,7 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-
+import styles from './CardUI.module.css'
 
 export default function CardUI({ name, description, handleClick, images, type, artists }) {
     // const theme = useTheme();
@@ -16,27 +16,27 @@ export default function CardUI({ name, description, handleClick, images, type, a
 
             <CardMedia
                 component="img"
-                sx={{ width: "12em", height: "12em", borderRadius: "15px", boxShadow: "0px 0px 6px 5px var(--primary-color)" }}
+                className={styles.cardImg}
                 image={images.url}
                 alt={name}
             />
 
 
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                <CardContent >
-                    <Typography component="div" variant="title" sx={{ maxWidth: "12em" }} >
-                        {name}
-                    </Typography>
-                    {/* <Typography variant="body" color="text.secondary" component="div" textOverflow="ellipsis">
+            {/* <Box sx={{ display: 'flex', flexDirection: 'column' }}> */}
+
+            <Typography component="div" variant="title" className={styles.CardText} sx={{ marginTop: "0.8em" }}>
+                {name}
+            </Typography>
+            {/* <Typography variant="body" color="text.secondary" component="div" textOverflow="ellipsis">
                         {description}
                     </Typography> */}
-                    <Typography variant='body2' color="grey">
+            {/* <Typography variant='body2' color="grey">
                         {artists && artists.map((artist) => {
                             return artist.name + " "
                         })}
-                    </Typography>
-                </CardContent>
-            </Box>
+                    </Typography> */}
+
+            {/* </Box> */}
         </>
     );
 }

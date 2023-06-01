@@ -10,6 +10,8 @@ import styles from './Album.module.css'
 
 import styled from '@emotion/styled'
 import TrackList from '../../Components/TrackList/TrackList';
+import { Box } from '@mui/material';
+import ShowArtists from '../../Components/showArtists/ShowArtists';
 
 
 const Album = () => {
@@ -40,67 +42,62 @@ const Album = () => {
 
     }, [])
 
-    // const containerStyle = {
-    //     background: `linear-gradient(to right, var(--primary-color) 0%, rgba(255, 255, 255, 0) 69%), url(${data?.images[0]?.url}) no-repeat`,
-    //     backgroundSize: "50%",
-    //     backgroundPosition: "right",
-    //     backgroundColor: "var(--primary-color)",
-    //     backdropFilter: "blur(10px)",
-    //     border: "none",
-
-    // };
-
-    const Container = styled.div`
-        background: linear-gradient(to right, var(--primary-color) 0%, rgba(255, 255, 255, 0) 69%), url(${props => props.imageUrl}) no-repeat;
-        background-size: "cover";
-        background-position: right;
-        background-color: var(--primary-color);
-        backdrop-filter: blur(10px);
-        border: none;
-
-        @media screen and (max-width: 768px) {
-            background: linear-gradient(0deg, var(--shadow-color), var(--shadow-color)), url(${props => props.imageUrl}) no-repeat;
-
-            background-size: 100%;
 
 
-        }
-      `;
+    // const Container = styled.div`
+    //     background:  url(${props => props.imageUrl}) no-repeat;
+    //     background-size: cover;
+    //     background-position: right;
+    //     background-color: var(--primary-color);
+    //     backdrop-filter: blur(10px);
+    //     border: none;
+    //     flex: 1;
+
+    //     @media screen and (max-width: 768px) {
+    //         background: linear-gradient(0deg, var(--shadow-color), var(--shadow-color)), url(${props => props.imageUrl}) no-repeat;
+
+    //         background-size: 100%;
+
+
+    //     }
+    //   `;
 
     return (
         <>
             {data && (
 
-                <div className="d-flex-row">
+                <Box sx={{ display: "flex", padding: "2em" }}>
 
 
-                    <Container className={styles.playlistHeader} imageUrl={data?.images[0]?.url} >
-                        <div className={styles.headertext}>
-                            <h1 className={styles.playlistNameHeading}>{data.name}</h1>
-                            <h2 >{data.label}</h2>
-                            <h3>{data?.tracks?.total} Songs</h3>
+                    <div className={styles.imageTextContainer} >
+                        <div className={styles.ImgWrapper}>
+                            <img src={data?.images[0]?.url} alt={data.name} width="100%" height="100%" />
+                        </div>
+                        <div className={styles.AlbumTextWrapper}>
+                            <h2 className={styles.playlistNameHeading}>{data.name}</h2>
+                            <h3 >{data.label}</h3>
+                            <h4>{data?.tracks?.total} Songs</h4>
                             {/* <h3>Followed By {data?.followers?.total}</h3> */}
                         </div>
-                    </Container>
-
-                    <div className="d-flex-row" ref={ref}>
-                        <div className={styles.tracksContainer}>
-
-                            {data?.tracks?.items?.map((track) => {
-                                return (
-                                    <React.Fragment key={track.id} >
-                                        <TrackList data={track} handleTrack={handleTrack} />
-                                    </React.Fragment>
-                                );
-                            })}
-
-                        </div>
-                        {/* <div style={{ flex: 1 }}>
-                            <Song />
-                        </div>  */}
                     </div>
 
-                </div>
+
+                    <div className={styles.tracksArtistContainer} ref={ref}>
+
+                        {data?.tracks?.items?.map((track) => {
+                            return (
+                                <React.Fragment key={track.id} >
+                                    <TrackList data={track} handleTrack={handleTrack} />
+                                </React.Fragment>
+                            );
+                        })}
+                        <ShowArtists />
+
+                    </div>
+
+
+
+                </Box>
             )}
         </>
     )
