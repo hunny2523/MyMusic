@@ -91,7 +91,6 @@ const Album = () => {
                                 </React.Fragment>
                             );
                         })}
-                        <ShowArtists />
 
                     </div>
 

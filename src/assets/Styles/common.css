@@ -1,9 +1,10 @@
 .CardHorizontalContainer {
   display: flex;
   flex-direction: row;
-  padding-left: 2em;
+  padding-left: 0.5em;
   padding-bottom: 0.5em;
   overflow: auto;
+  padding-left: 2em;
 }
 
 .CardHorizontalContainer::-webkit-scrollbar {
@@ -16,7 +17,9 @@
 } */
 
 .cardMargin {
-  margin-right: 3em;
+  /* margin-right: 3em; */
+  margin-left: 1.4em;
+  margin-right: 1.4em;
   margin-block: 1em;
   cursor: pointer;
 }
@@ -38,9 +41,31 @@
   color: var(--text-color);
 }
 
+.verticalCardWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 0.5em;
+}
+
+@media screen and (max-width: 426px) {
+  .verticalCardWrapper {
+    justify-content: center;
+  }
+}
+
 @media screen and (max-width: 769px) {
   .cardMargin {
-    margin-right: 2em;
+    margin-left: 1em;
+    margin-right: 1em;
     margin-block: 1em;
+  }
+  .CardHorizontalContainer {
+    padding-left: 0.8em;
+  }
+}
+
+@media screen and (max-width: 1441px) and (min-width: 769px) {
+  .CardHorizontalContainer {
+    padding-left: 1em;
   }
 }

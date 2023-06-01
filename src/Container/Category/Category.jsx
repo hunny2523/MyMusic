@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { spotifyApi } from '../../Services/spotify';
 import ShowPlaylist from '../../Components/ShowPlaylist/ShowPlaylist';
-import styles from './Category.module.css'
+import '../../assets/Styles/common.css'
 const Category = () => {
     const params = useParams();
 
@@ -20,7 +20,7 @@ const Category = () => {
     }, [])
     return (
         data && (
-            <div className={styles.categoriesWrapper}>
+            <div className="verticalCardWrapper">
                 {
                     data?.playlists?.items.map((playlist) => {
                         if (playlist.type === "playlist") {

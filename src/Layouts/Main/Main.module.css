@@ -1,6 +1,6 @@
 .mainContainer {
   background-color: var(--secondary-color);
-  height: 84vh;
+  height: 82vh;
   overflow: auto;
   position: relative;
 }

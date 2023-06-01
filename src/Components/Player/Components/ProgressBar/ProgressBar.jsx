@@ -24,8 +24,8 @@ const ProgressBar = () => {
 
     return (
         <div className={styles.progressBar}>
-            <label htmlFor="progress">Progress</label>
-            <progress id="progress" value={progress} max={100}></progress>
+
+            <progress value={progress} max={100}></progress>
         </div>
     );
 };

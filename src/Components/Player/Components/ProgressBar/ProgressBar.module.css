@@ -1,11 +1,11 @@
-.progressBar label {
-  font-weight: bold;
+.progressBar {
+  padding: 0;
+  margin: 0;
 }
 
 .progressBar progress {
   width: 100%;
-  margin-top: 5px;
-  height: 10px;
+  height: 5px;
   border-radius: 10px;
 }
 
