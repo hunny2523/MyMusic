@@ -1,6 +1,8 @@
 .mainContainer {
   background-color: var(--secondary-color);
   height: 82vh;
-  overflow: auto;
+  overflow-y: auto;
+  /* overflow-x: hidden; */
+  max-width: 100%;
   position: relative;
 }

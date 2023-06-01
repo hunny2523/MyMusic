@@ -60,11 +60,8 @@ const Playlist = () => {
         border: none;
    
         @media screen and (max-width: 768px) {
-            background: linear-gradient(0deg, var(--shadow-color), var(--shadow-color)), url(${props => props.imageUrl}) no-repeat;
-    
-            background-size: 100%;
-
-
+            background: linear-gradient(0deg, var(--overlay-color), var(--overlay-color)), url(${props => props.imageUrl}) no-repeat;
+            background-size: "cover";
         }
       `;
 

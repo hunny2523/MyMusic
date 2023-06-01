@@ -30,7 +30,7 @@
 
 @media screen and (max-width: 1025px) {
   .playlistNameHeading {
-    font-size: 3em;
+    font-size: 2em;
   }
   .headertext h2 {
     margin-bottom: 0.5em;
@@ -51,7 +51,7 @@
 
 @media screen and (max-width: 769px) {
   .headertext {
-    width: 100%;
+    width: 90%;
   }
 }
 
