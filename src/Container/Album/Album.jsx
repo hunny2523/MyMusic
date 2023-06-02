@@ -51,17 +51,22 @@ const Album = () => {
 
         <Grid container sx={{ height: "100%" }}>
 
-            <Grid item md={5} xs={12} sx={{ alignSelf: "center" }}>
+            <Grid item lg={5} xs={12} sx={{ alignSelf: "center" }}>
                 <div className={styles.ImgWrapper}>
                     <img src={data?.images[0]?.url} alt={data.name} width="100%" height="100%" />
                 </div>
             </Grid>
-            <Grid item md={7} xs={12} >
+            <Grid item lg={7} xs={12} >
 
                 <div className={styles.AlbumTextWrapper}>
-                    <h2 className={styles.playlistNameHeading}>{data.name}</h2>
 
-                    <h3 >{data.label} {data?.tracks?.total} Songs</h3>
+                    <div>
+                        <h2 className={styles.playlistNameHeading}>{data.name}</h2>
+                        <h3>
+                            {data.label}
+                        </h3>
+                    </div>
+                    <h3 > {data?.tracks?.total} Songs</h3>
 
                 </div >
                 < div className={styles.tracksListContainer} ref={ref} >
@@ -69,21 +74,14 @@ const Album = () => {
                     {data?.tracks?.items?.map((track) => {
                         return (
                             <React.Fragment key={track.id} >
-                                <TrackList data={track} handleTrack={handleTrack} />
+                                <TrackList data={track} handleTrack={handleTrack} image={data?.images[0]?.url} />
                             </React.Fragment>
                         );
                     })}
 
                 </ div>
 
-
-
-
             </Grid>
-
-
-
-
 
         </Grid>
 

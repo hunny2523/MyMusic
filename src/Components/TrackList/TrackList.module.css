@@ -29,6 +29,9 @@
   margin-inline: 1em;
   text-overflow: ellipsis;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .TimeHeartWrapper {
@@ -39,4 +42,13 @@
 
 .TimeHeartWrapper p {
   padding-inline: "30px";
+}
+@media screen and (max-width: 426px) {
+  .artists {
+    display: none;
+  }
+  .trackName {
+    font-size: smaller;
+    font-weight: normal;
+  }
 }

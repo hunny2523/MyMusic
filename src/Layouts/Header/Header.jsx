@@ -10,8 +10,10 @@ import { ThemeContext } from '../../Context/ThemeContext';
 import { IconButton } from '@mui/material';
 
 const Header = () => {
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
     const [inputValue, setInputValue] = useState('');
 
     const { theme, toggleTheme } = useContext(ThemeContext)

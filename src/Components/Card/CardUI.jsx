@@ -17,7 +17,7 @@ export default function CardUI({ name, description, handleClick, images, type, a
             <CardMedia
                 component="img"
                 className={styles.cardImg}
-                image={images.url}
+                image={images?.url}
                 alt={name}
             />
 

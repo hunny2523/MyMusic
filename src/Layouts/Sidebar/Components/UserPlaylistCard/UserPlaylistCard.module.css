@@ -1,0 +1,26 @@
+.UserPlaylistCardContainer {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  padding: 0.5em;
+  margin-inline: 1em;
+  margin-block: 0.5em;
+  justify-content: space-between;
+  background-color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.UserPlaylistCardContainer div {
+  display: flex;
+  align-items: center;
+}
+
+.userPlaylistAvatar {
+  margin-right: 1em;
+}
+
+@media screen and (max-width: 769px) {
+  .UserPlaylistCardContainer {
+    margin-inline: 0.5em;
+  }
+}
