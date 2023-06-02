@@ -10,8 +10,9 @@ import styles from './Album.module.css'
 
 import styled from '@emotion/styled'
 import TrackList from '../../Components/TrackList/TrackList';
-import { Box } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import ShowArtists from '../../Components/showArtists/ShowArtists';
+import { MusicNote } from '@mui/icons-material';
 
 
 const Album = () => {
@@ -44,61 +45,49 @@ const Album = () => {
 
 
 
-    // const Container = styled.div`
-    //     background:  url(${props => props.imageUrl}) no-repeat;
-    //     background-size: cover;
-    //     background-position: right;
-    //     background-color: var(--primary-color);
-    //     backdrop-filter: blur(10px);
-    //     border: none;
-    //     flex: 1;
-
-    //     @media screen and (max-width: 768px) {
-    //         background: linear-gradient(0deg, var(--shadow-color), var(--shadow-color)), url(${props => props.imageUrl}) no-repeat;
-
-    //         background-size: 100%;
-
-
-    //     }
-    //   `;
-
     return (
-        <>
-            {data && (
 
-                <Box sx={{ display: "flex", padding: "2em" }}>
+        data &&
 
+        <Grid container sx={{ height: "100%" }}>
 
-                    <div className={styles.imageTextContainer} >
-                        <div className={styles.ImgWrapper}>
-                            <img src={data?.images[0]?.url} alt={data.name} width="100%" height="100%" />
-                        </div>
-                        <div className={styles.AlbumTextWrapper}>
-                            <h2 className={styles.playlistNameHeading}>{data.name}</h2>
-                            <h3 >{data.label}</h3>
-                            <h4>{data?.tracks?.total} Songs</h4>
-                            {/* <h3>Followed By {data?.followers?.total}</h3> */}
-                        </div>
+            <Grid item lg={5} xs={12} sx={{ alignSelf: "center" }}>
+                <div className={styles.ImgWrapper}>
+                    <img src={data?.images[0]?.url} alt={data.name} width="100%" height="100%" />
+                </div>
+            </Grid>
+            <Grid item lg={7} xs={12} >
+
+                <div className={styles.AlbumTextWrapper}>
+
+                    <div>
+                        <h2 className={styles.playlistNameHeading}>{data.name}</h2>
+                        <h3>
+                            {data.label}
+                        </h3>
                     </div>
+                    <h3 > {data?.tracks?.total} Songs</h3>
+
+                </div >
+                < div className={styles.tracksListContainer} ref={ref} >
+
+                    {data?.tracks?.items?.map((track) => {
+                        return (
+                            <React.Fragment key={track.id} >
+                                <TrackList data={track} handleTrack={handleTrack} image={data?.images[0]?.url} />
+                            </React.Fragment>
+                        );
+                    })}
+
+                </ div>
+
+            </Grid>
+
+        </Grid>
 
 
-                    <div className={styles.tracksArtistContainer} ref={ref}>
-
-                        {data?.tracks?.items?.map((track) => {
-                            return (
-                                <React.Fragment key={track.id} >
-                                    <TrackList data={track} handleTrack={handleTrack} />
-                                </React.Fragment>
-                            );
-                        })}
-
-                    </div>
 
 
-
-                </Box>
-            )}
-        </>
     )
 }
 

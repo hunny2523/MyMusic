@@ -3,13 +3,16 @@ import React, { Fragment } from 'react'
 import styles from './Headings.module.css'
 import { Link } from 'react-router-dom'
 
-const Headings = ({ heading }) => {
+const Headings = ({ heading, to, atHomePage }) => {
     return (
         <div className={styles.headingWrapper}>
             <h3 className={styles.heading}>
                 {heading}
             </h3>
-            <Link to="/playlist" className={styles.showAllLink}>Show All</Link>
+            {
+                atHomePage ? <Link to={to} className={styles.showAllLink}>Show All</Link> : <></>
+            }
+
         </div>
 
     )

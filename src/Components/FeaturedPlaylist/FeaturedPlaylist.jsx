@@ -3,17 +3,17 @@ import { useSelector } from 'react-redux'
 import Headings from '../Headings/Headings';
 import ShowPlaylist from '../ShowPlaylist/ShowPlaylist';
 
-const FeaturedPlaylist = () => {
+const FeaturedPlaylist = ({ atHomePage }) => {
     const featuredPlaylists = useSelector(state => state.browse.featuredPlaylists);
     return (
         <Fragment  >
 
             {featuredPlaylists && (
                 <>
-                    <Headings heading={featuredPlaylists?.message} />
-                    <div className='CardHorizontalContainer'>
+                    <Headings heading={featuredPlaylists?.message} to="/FeatuedPlaylists" atHomePage={atHomePage} />
+                    <div className={atHomePage ? 'CardHorizontalContainer' : 'verticalCardWrapper'} >
                         {featuredPlaylists?.playlists?.items.map((playlist) => {
-                            if (playlist.type === "playlist") {
+                            if (playlist?.type === "playlist") {
                                 return <ShowPlaylist key={playlist.id} data={playlist} />
                             }
                         })}
@@ -21,7 +21,6 @@ const FeaturedPlaylist = () => {
 
                 </>
             )}
-
 
         </Fragment >
     )

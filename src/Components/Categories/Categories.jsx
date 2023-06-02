@@ -4,15 +4,15 @@ import Headings from '../Headings/Headings';
 import ShowPlaylist from '../ShowPlaylist/ShowPlaylist';
 import ShowCategory from '../ShowCategory/ShowCategory';
 
-const Categories = () => {
+const Categories = ({ atHomePage }) => {
     const categories = useSelector(state => state.browse.categories);
     return (
         <Fragment  >
 
             {categories && (
                 <>
-                    <Headings heading={"Pick Something Up"} />
-                    <div className='CardHorizontalContainer'>
+                    <Headings heading={"Pick Something Up"} to="/allCategories" atHomePage={atHomePage} />
+                    <div className={atHomePage ? 'CardHorizontalContainer' : 'verticalCardWrapper'}>
                         {categories?.items?.map((category) => {
                             return <ShowCategory key={category.id} data={category} />
                         })}

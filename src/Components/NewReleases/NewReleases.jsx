@@ -3,15 +3,14 @@ import { useSelector } from 'react-redux'
 import Headings from '../Headings/Headings';
 import ShowAlbum from '../ShowAlbum/ShowAlbum';
 
-const NewReleases = () => {
+const NewReleases = ({ atHomePage }) => {
     const newReleases = useSelector(state => state.browse.newReleases);
     return (
         <Fragment  >
             {newReleases && (
                 <>
-                    {console.log(newReleases)}
-                    <Headings heading={"New Releases"} />
-                    <div className='CardHorizontalContainer'>
+                    <Headings heading={"New Releases"} to="/NewReleases" atHomePage={atHomePage} />
+                    <div className={atHomePage ? 'CardHorizontalContainer' : 'verticalCardWrapper'} >
                         {newReleases?.items?.map((album) => {
                             if (album.type === "album") {
                                 return <ShowAlbum key={album.id} data={album} />
