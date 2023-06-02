@@ -15,3 +15,21 @@
   color: var(--text-color);
   text-decoration: none;
 }
+
+.AddUserPlaylistBtton {
+  float: right;
+  margin-inline: 1em;
+}
+
+.userPlaylistWrapper {
+  overflow-y: hidden;
+  max-height: 48vh;
+}
+
+.userPlaylistWrapper:hover {
+  overflow-y: auto;
+}
+
+.userPlaylistWrapper::-webkit-scrollbar {
+  width: 2px;
+}

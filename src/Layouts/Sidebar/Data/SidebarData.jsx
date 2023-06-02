@@ -22,12 +22,12 @@ export const sidebarLabels = {
                 path: "RecentlyPlayed",
                 icon: <AccessAlarmOutlined className="darkModeIcon" />,
             },
-            {
-                id: 4,
-                name: "My PlayList",
-                path: "MyPlaylist",
-                icon: <QueueMusic className="darkModeIcon" />,
-            },
+            // {
+            //     id: 4,
+            //     name: "My PlayList",
+            //     path: "MyPlaylist",
+            //     icon: <QueueMusic className="darkModeIcon" />,
+            // },
         ],
         siderbarFooter: "© 2023 Honey Patel",
     },

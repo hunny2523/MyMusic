@@ -2,6 +2,9 @@
   min-height: 46vh;
   padding-bottom: 1em;
   box-shadow: 0px 12px 39px -4px var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .headertext {
@@ -23,7 +26,7 @@
 }
 
 .tracksContainer {
-  height: 92vh;
+  height: 82vh;
   overflow-y: auto;
   flex: 1.5;
 }
@@ -57,4 +60,8 @@
 
 .trackListWrapper {
   margin: 1em;
+}
+
+.searchInput::placeholder {
+  color: var(--text-color);
 }

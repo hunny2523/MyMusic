@@ -122,7 +122,6 @@ button {
   --overlay-color: var(--overlay-color-light);
 }
 
-/* Usage example */
 .container {
   color: var(--text-color);
   background-color: var(--primary-color);
