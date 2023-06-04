@@ -10,6 +10,8 @@ const Search = () => {
     const [data, setdata] = useState(null);
 
     useEffect(() => {
+
+        console.log("-----------------searchQuery" + searchQuery);
         async function search() {
             console.log("searchquery+" + searchQuery);
             if (searchQuery.trim() !== '') {

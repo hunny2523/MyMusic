@@ -15,14 +15,6 @@ import NavbarFooter from '../../Layouts/NavbarFooter/NavbarFooter';
 const Body = () => {
 
 
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(fetchFeaturedPlaylists())
-        dispatch(fetchNewReleases())
-        dispatch(fetchCategories())
-    }, [dispatch])
-
     const { theme } = useContext(ThemeContext);
 
     return (

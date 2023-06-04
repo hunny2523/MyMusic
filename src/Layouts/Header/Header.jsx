@@ -25,7 +25,7 @@ const Header = () => {
 
     useEffect(() => {
         const handleSearchDebounced = debounce((query) => {
-            dispatch(SearchActions.chamgeSearchQuery(query));
+            dispatch(SearchActions.changeSearchQuery(query));
         }, 500);
 
         handleSearchDebounced(inputValue);

@@ -1,19 +1,28 @@
 import React, { useDeferredValue, useEffect, useRef, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { spotifyApi } from '../../Services/spotify';
 import '../../assets/Styles/common.css'
 import styles from './Playlist.module.css'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { currentTrackActions } from '../../Store/CurrentTrackSlice';
 import styled from '@emotion/styled'
 import TrackList from '../../Components/TrackList/TrackList';
 import { IconButton, InputBase, TextField } from '@mui/material';
 import { Search, SearchOutlined } from '@mui/icons-material';
 import { Box, borderBottomColor } from '@mui/system';
+import SearchTrack from './Components/SearchTrack/SearchTrack';
+import SearchResults from './Components/SearchResults/SearchResults';
 
 
-const Playlist = ({ userPlaylist }) => {
 
+
+
+
+
+const Playlist = () => {
+
+    const location = useLocation()
+    const state = location.state;
 
     const ref = useRef(null);
 
@@ -27,25 +36,12 @@ const Playlist = ({ userPlaylist }) => {
     }
 
 
-    const [searchText, setSearchtext] = useState('');
-    const [searchTrack, setSearchTrack] = useState(null);
+
     // const deferredSearchText = useDeferredValue(searchText);
 
-    // useEffect(() => {
-    //     async function getSearchTrack() {
-    //         const data = await spotifyApi.searchTracks(deferredSearchText);
-    //         console.log(data);
-    //         setSearchTrack(data)
-    //     }
-    //     getSearchTrack();
-    // }, [deferredSearchText])
 
-    const handleChange = (e) => {
-        let value = e.target.value;
-        console.log(value); // Check if the value is being logged correctly
-        setSearchtext(value);
-        console.log(data);
-    };
+
+
 
 
 
@@ -53,13 +49,14 @@ const Playlist = ({ userPlaylist }) => {
 
     const [data, setdata] = useState(null)
 
-    useEffect(() => {
-        async function fetchData() {
-            const data = await spotifyApi.getPlaylist(params.id)
-            setdata(data)
-        }
-        fetchData()
+    const fetchData = async () => {
+        const playlistData = await spotifyApi.getPlaylist(params.id);
+        setdata(playlistData);
+        console.log(playlistData);
+    };
 
+    useEffect(() => {
+        fetchData();
     }, [params])
 
 
@@ -91,63 +88,28 @@ const Playlist = ({ userPlaylist }) => {
                             <h3>Followed By {data?.followers?.total}</h3>
                         </div>
 
-                        {/* <TextField
-                            type='text'
-                            sx={{ maxWidth: "20vw" }}
-                            id="standard-bare"
-                            variant='standard'
-                            color="info"
-                            value={searchText}
-                            onChange={handleChange}
-                            className={styles.searchInput}
-                            placeholder="Search Track"
-                            InputProps={{
-                                endAdornment: (
-                                    <IconButton>
-                                        <SearchOutlined className="darkModeIcon" />
-                                    </IconButton>
-                                ),
-                                style: {
-                                    color: "var(--text-color)",
-                                },
-                            }}
-                        /> */}
-
-                        <input type="text" value={searchText} onChange={handleChange} />
-
-
+                        {state && <SearchTrack />}
 
                     </Container>
 
-                    {searchTrack && (
-                        searchTrack?.items?.map((track) => {
+
+
+                    {state && <SearchResults />}
+
+
+                    <div className={styles.tracksContainer} ref={ref}>
+
+                        {data?.tracks?.items?.map((track) => {
                             return (
-                                <React.Fragment key={track.id} >
-                                    <TrackList data={track} handleTrack={handleTrack} />
+                                <React.Fragment key={track.track.id} >
+                                    <TrackList data={track.track} handleTrack={handleTrack} fetchData={fetchData} />
                                 </React.Fragment>
                             );
-                        })
-                    )}
-
-
-
-
-
-
-                    <div className="d-flex-row" ref={ref}>
-                        <div className={styles.tracksContainer}>
-
-                            {data?.tracks?.items?.map((track) => {
-                                return (
-                                    <React.Fragment key={track.track.id} >
-                                        <TrackList data={track.track} handleTrack={handleTrack} />
-                                    </React.Fragment>
-                                );
-                            })}
-
-                        </div>
+                        })}
 
                     </div>
+
+
 
                 </div>
             )}

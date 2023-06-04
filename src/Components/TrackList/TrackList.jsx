@@ -1,12 +1,50 @@
-import { Avatar } from '@mui/material'
-import React, { Fragment, useEffect } from 'react'
+import { Avatar, Button } from '@mui/material'
+import React, { Fragment } from 'react'
 import styles from './TrackList.module.css'
-import { FavoriteBorder, FavoriteOutlined } from '@mui/icons-material'
+import { Favorite, FavoriteBorder } from '@mui/icons-material'
 import { formatDuration } from '../../Utils/Helper'
+import { spotifyApi } from '../../Services/spotify'
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addTrackToFavorite, favoritesSliceActions, removeTrackFromFavourties } from '../../Store/Favorites'
 
-const TrackList = ({ data, handleTrack, image }) => {
+const TrackList = ({ data, handleTrack, image, searchTrack, params, fetchData }) => {
+
+    const dispatch = useDispatch();
+
+    const favoriteTracksIDs = useSelector(state => state.favorites.favoriteTracksIDs)
+
+    const [isFavorite, setIsFavorite] = useState(() => {
+        return favoriteTracksIDs.includes(data.id)
+    });
 
 
+    // useEffect(() => {
+    //     // Fetch favorites data and check if the track exists in the favorites list
+    //     const isTrackInFavorites = checkIfTrackExistsInFavorites(data.id);
+    //     setIsFavorite(isTrackInFavorites);
+    // }, [data.id]);
+
+    const handleAddToFavorite = (e) => {
+        e.stopPropagation();
+        if (isFavorite) {
+            dispatch(removeTrackFromFavourties(data.id))
+            setIsFavorite(!isFavorite);
+            return;
+        }
+        dispatch(addTrackToFavorite(data.id))
+        setIsFavorite(!isFavorite);
+    };
+
+
+    const addTrackToPlaylist = async (e) => {
+        e.stopPropagation();
+        if (params) {
+            const response = await spotifyApi.addTracksToPlaylist(params.id, [data.uri]);
+            console.log(response);
+            fetchData();
+        }
+    }
 
     return (
         <div className={styles.trackRowContainer} onClick={() => handleTrack(data.id)}>
@@ -35,7 +73,13 @@ const TrackList = ({ data, handleTrack, image }) => {
             <div className={styles.TimeHeartWrapper}>
 
                 <p >{formatDuration(data.duration_ms)} </p>
-                <FavoriteBorder />
+
+                {isFavorite ? (
+                    <Favorite onClick={(e) => handleAddToFavorite(e)} />
+                ) : (
+                    <FavoriteBorder onClick={(e) => handleAddToFavorite(e)} />
+                )}
+                {searchTrack && <Button variant="contained" onClick={addTrackToPlaylist}>Add</Button>}
 
             </div>
         </div>

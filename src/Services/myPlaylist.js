@@ -1,7 +1,6 @@
 import { spotifyApi } from "./spotify";
 
 export const getUserPlaylists = async (userId) => {
-    console.log("=============================================");
     try {
         if (userId) {
             const playlists = await spotifyApi.getUserPlaylists(userId);

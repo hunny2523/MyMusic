@@ -14,7 +14,6 @@ export default function ShowCategory({ data }) {
 
     return (
         <div className='cardMargin' onClick={() => handleClick(data.id)}>
-            {console.log(data + "show")}
             <CardUI name={data.name} images={data.icons[0]} handleClick={handleClick} />
         </div>
     );

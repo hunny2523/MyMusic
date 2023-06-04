@@ -130,7 +130,7 @@ const Player = () => {
 
                     </Box>
                 </div>
-                <div className={styles.DurationFavouriteWrapper}>
+                <div className={styles.DurationFavoriteWrapper}>
 
                     <p>{formatDuration(trackData.duration_ms)}</p>
                     <FavoriteBorder />

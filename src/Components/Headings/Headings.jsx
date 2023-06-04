@@ -10,7 +10,7 @@ const Headings = ({ heading, to, atHomePage }) => {
                 {heading}
             </h3>
             {
-                atHomePage ? <Link to={to} className={styles.showAllLink}>Show All</Link> : <></>
+                atHomePage && <Link to={to} className={styles.showAllLink}>Show All</Link>
             }
 
         </div>
