@@ -3,16 +3,12 @@ import { useLocation, useParams } from 'react-router-dom'
 import { spotifyApi } from '../../Services/spotify';
 import '../../assets/Styles/common.css'
 import styles from './Playlist.module.css'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { currentTrackActions } from '../../Store/CurrentTrackSlice';
 import styled from '@emotion/styled'
 import TrackList from '../../Components/TrackList/TrackList';
-import { IconButton, InputBase, TextField } from '@mui/material';
-import { Search, SearchOutlined } from '@mui/icons-material';
-import { Box, borderBottomColor } from '@mui/system';
 import SearchTrack from './Components/SearchTrack/SearchTrack';
 import SearchResults from './Components/SearchResults/SearchResults';
-
 
 
 
@@ -34,13 +30,6 @@ const Playlist = () => {
         dispatch(currentTrackActions.addTrackId(id));
         ref.current.scrollIntoView({ behavior: 'smooth' });
     }
-
-
-
-    // const deferredSearchText = useDeferredValue(searchText);
-
-
-
 
 
 

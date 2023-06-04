@@ -9,12 +9,20 @@ import { ThemeContext } from '../../Context/ThemeContext';
 import Player from '../../Components/Player/Player';
 import ScrollToTopButton from '../../Layouts/ScrollToTop/ScrollToTop';
 import NavbarFooter from '../../Layouts/NavbarFooter/NavbarFooter';
+import { fetchFavoriteTracks } from '../../Store/Favorites';
 
 
 
 const Body = () => {
 
+    const dispatch = useDispatch()
 
+    useEffect(() => {
+        dispatch(fetchFeaturedPlaylists())
+        dispatch(fetchNewReleases())
+        dispatch(fetchCategories())
+        dispatch(fetchFavoriteTracks());
+    }, [dispatch])
     const { theme } = useContext(ThemeContext);
 
     return (

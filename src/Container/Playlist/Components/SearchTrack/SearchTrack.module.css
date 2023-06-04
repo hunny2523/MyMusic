@@ -1,11 +1,11 @@
 .searchTrackInput {
-  width: 25vw;
+  width: 28vw;
   margin-left: 3em;
 }
 
 @media screen and (max-width: 426px) {
   .searchTrackInput {
-    margin-inline: 1em;
-    width: 90vw;
+    margin: 0 auto;
+    width: 85vw;
   }
 }

@@ -44,6 +44,7 @@ const SearchTrack = () => {
             id="standard-bare"
             variant='standard'
             color="info"
+
             className={styles.searchTrackInput}
             onChange={(e) => setSearchText(e.target.value)}
             placeholder="Search Track"
@@ -55,6 +56,7 @@ const SearchTrack = () => {
                 ),
                 style: {
                     color: "var(--text-color)",
+                    marginLeft: "3em"
                 },
             }}
         />

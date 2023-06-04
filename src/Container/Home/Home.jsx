@@ -11,14 +11,6 @@ import { fetchFavoriteTracks } from '../../Store/Favorites'
 
 const Home = () => {
 
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(fetchFeaturedPlaylists())
-        dispatch(fetchNewReleases())
-        dispatch(fetchCategories())
-        dispatch(fetchFavoriteTracks());
-    }, [dispatch])
 
 
     return (
