@@ -6,9 +6,9 @@ import { formatDuration } from '../../Utils/Helper'
 import { spotifyApi } from '../../Services/spotify'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addTrackToFavorite, favoritesSliceActions, removeTrackFromFavourties } from '../../Store/Favorites'
+import { addTrackToFavorite, removeTrackFromFavourties } from '../../Store/Favorites'
 
-const TrackList = ({ data, handleTrack, image, searchTrack, params, fetchData }) => {
+const TrackList = ({ data, handleTrack, image, searchTrack, params, setRender }) => {
 
     const dispatch = useDispatch();
 
@@ -18,12 +18,6 @@ const TrackList = ({ data, handleTrack, image, searchTrack, params, fetchData })
         return favoriteTracksIDs.includes(data.id)
     });
 
-
-    // useEffect(() => {
-    //     // Fetch favorites data and check if the track exists in the favorites list
-    //     const isTrackInFavorites = checkIfTrackExistsInFavorites(data.id);
-    //     setIsFavorite(isTrackInFavorites);
-    // }, [data.id]);
 
     const handleAddToFavorite = (e) => {
         e.stopPropagation();
@@ -40,9 +34,9 @@ const TrackList = ({ data, handleTrack, image, searchTrack, params, fetchData })
     const addTrackToPlaylist = async (e) => {
         e.stopPropagation();
         if (params) {
-            const response = await spotifyApi.addTracksToPlaylist(params.id, [data.uri]);
-            console.log(response);
-            fetchData();
+            await spotifyApi.addTracksToPlaylist(params.id, [data.uri]);
+            setRender(true);
+
         }
     }
 
@@ -75,9 +69,9 @@ const TrackList = ({ data, handleTrack, image, searchTrack, params, fetchData })
                 <p >{formatDuration(data.duration_ms)} </p>
 
                 {isFavorite ? (
-                    <Favorite onClick={(e) => handleAddToFavorite(e)} />
+                    <Favorite onClick={(e) => handleAddToFavorite(e)} color='secondary' />
                 ) : (
-                    <FavoriteBorder onClick={(e) => handleAddToFavorite(e)} />
+                    <FavoriteBorder onClick={(e) => handleAddToFavorite(e)} color='secondary' />
                 )}
                 {searchTrack && <Button variant="contained" onClick={addTrackToPlaylist}>Add</Button>}
 

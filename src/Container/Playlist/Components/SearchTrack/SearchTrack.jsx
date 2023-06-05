@@ -11,21 +11,12 @@ import styles from './SearchTrack.module.css'
 const SearchTrack = () => {
     const [searchText, setSearchText] = useState("")
     const dispatch = useDispatch()
-    // const handleChange = (e) => {
-    //     let value = e.target.value;
-    //     console.log(value); // Check if the value is being logged correctly
-    //     setSearchText(value);
-    //     console.log(data);
-    // };
 
-    const handleTrack = (id) => {
-        console.log("clicked" + id);
 
-        dispatch(currentTrackActions.addTrackId(id));
-        ref.current.scrollIntoView({ behavior: 'smooth' });
-    }
+
 
     useEffect(() => {
+
         const handleSearchDebounced = debounce((query) => {
             dispatch(SearchActions.changeSearchQuery(query));
         }, 500);
@@ -39,7 +30,7 @@ const SearchTrack = () => {
 
     return (
         <TextField
-            autoFocus
+
             type='text'
             id="standard-bare"
             variant='standard'

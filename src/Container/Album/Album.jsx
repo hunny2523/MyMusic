@@ -2,17 +2,11 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { spotifyApi } from '../../Services/spotify';
 import '../../assets/Styles/common.css'
-import CardUI from '../../Components/Card/CardUI';
 import { useDispatch } from 'react-redux';
 import { currentTrackActions } from '../../Store/CurrentTrackSlice';
-import Song from '../../Components/Player/Player';
 import styles from './Album.module.css'
-
-import styled from '@emotion/styled'
 import TrackList from '../../Components/TrackList/TrackList';
-import { Box, Grid } from '@mui/material';
-import ShowArtists from '../../Components/showArtists/ShowArtists';
-import { MusicNote } from '@mui/icons-material';
+import { Grid } from '@mui/material';
 
 
 const Album = () => {

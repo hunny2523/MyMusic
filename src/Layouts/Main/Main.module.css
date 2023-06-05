@@ -1,8 +1,22 @@
 .mainContainer {
   background-color: var(--secondary-color);
-  height: 82vh;
+  /* height: 82vh; */
   overflow-y: auto;
   /* overflow-x: hidden; */
   max-width: 100%;
   position: relative;
+}
+.regularHeight {
+  height: 91vh;
+}
+.TrimHeight {
+  height: 82vh;
+}
+@media screen and (max-width: 426px) {
+  .TrimHeight {
+    height: calc(84vh - 56px);
+  }
+  .regularHeight {
+    height: calc(91vh - 56px);
+  }
 }

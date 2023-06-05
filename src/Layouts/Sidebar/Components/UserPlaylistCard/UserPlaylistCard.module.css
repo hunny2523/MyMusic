@@ -8,6 +8,7 @@
   justify-content: space-between;
   background-color: var(--secondary-color);
   cursor: pointer;
+  position: relative;
 }
 
 .UserPlaylistCardContainer div {
@@ -23,4 +24,18 @@
   .UserPlaylistCardContainer {
     margin-inline: 0.5em;
   }
+}
+
+.deleteButton {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.UserPlaylistCardContainer:hover .deleteButton {
+  opacity: 1;
 }

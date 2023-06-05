@@ -9,9 +9,7 @@ const ProgressBar = () => {
 
             const currentTime = audioElement.currentTime;
             console.log(currentTime);
-            const calculatedProgress = (currentTime / 30) * 100;
-            setProgress(calculatedProgress);
-            // if (currentTime > 29) {
+            const calculatedProgress = (currentTime / 30)
             //     clearInterval(interval);
 
             // }
@@ -24,7 +22,6 @@ const ProgressBar = () => {
 
     return (
         <div className={styles.progressBar}>
-
             <progress value={progress} max={100}></progress>
         </div>
     );

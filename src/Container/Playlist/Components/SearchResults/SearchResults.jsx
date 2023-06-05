@@ -7,7 +7,7 @@ import TrackList from '../../../../Components/TrackList/TrackList';
 import { currentTrackActions } from '../../../../Store/CurrentTrackSlice';
 import { useParams } from 'react-router-dom';
 
-const SearchResults = () => {
+const SearchResults = ({ setRender }) => {
     const params = useParams()
     const [searchTracks, setSearchTracks] = useState(null)
     const searchTrack = useSelector((state) => state.search.searchQuery);
@@ -36,7 +36,7 @@ const SearchResults = () => {
             searchTracks?.tracks?.items?.map((track) => {
                 return (
                     <React.Fragment key={track.id} >
-                        <TrackList data={track} handleTrack={handleTrack} searchTrack={true} params={params} />
+                        <TrackList data={track} handleTrack={handleTrack} searchTrack={true} params={params} setRender={setRender} />
                     </React.Fragment>
                 );
             })
