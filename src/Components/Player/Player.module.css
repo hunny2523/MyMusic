@@ -6,7 +6,6 @@
   align-items: center;
   background-color: var(--brand-color);
   color: var(--text-color);
-
   height: 9vh;
   padding-inline: 1em;
   box-shadow: -1px 0px 3px 4px var(--secondary-color);
@@ -56,6 +55,8 @@
 @media screen and (max-width: 426px) {
   .playerContainer {
     padding-inline: 0px;
+    height: 7vh;
+    bottom: 56px;
   }
   .progressBarDiv {
     display: none;

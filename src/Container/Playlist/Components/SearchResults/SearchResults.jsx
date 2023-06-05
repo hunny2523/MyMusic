@@ -22,7 +22,7 @@ const SearchResults = () => {
         console.log(searchTrack);
         if (searchTrack.trim() !== "") {
             async function getSearchTrack() {
-                const data = await spotifyApi.searchTracks(searchTrack, { limit: 1 });
+                const data = await spotifyApi.searchTracks(searchTrack, { limit: 5 });
                 setSearchTracks(data);
             }
             getSearchTrack();

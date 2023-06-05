@@ -4,14 +4,17 @@ import Profile from './Components/Profile/Profile'
 import Navigation from './Components/Navigation/Navigation'
 import { Typography } from '@mui/material'
 import { sidebarLabels } from './Data/SidebarData'
+import { useSelector } from 'react-redux'
 
 const Sidebar = () => {
-    const navOptions = sidebarLabels.sidebarLabels.sidebarOptions;
+    const currentTrack = useSelector((state) => state.currentTrack.trackID);
+
     const footerText = sidebarLabels.sidebarLabels.siderbarFooter;
+
     return (
-        <div className={styles.sidebar}>
+        <div className={`${styles.sidebar} ${!currentTrack ? styles.regularHeight : styles.TrimHeight}`}>
             <Profile />
-            <Navigation options={navOptions} />
+            <Navigation />
             <Typography variant="caption" className={styles.footerText}>
                 {footerText}
             </Typography>

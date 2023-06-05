@@ -9,30 +9,21 @@ import {
 } from '@mui/material';
 import styles from './Navigation.module.css';
 import { NavLink } from 'react-router-dom';
-import { spotifyApi } from '../../../../Services/spotify';
 import { useDispatch, useSelector } from 'react-redux';
 import UserPlaylistCard from '../UserPlaylistCard/UserPlaylistCard';
 import { Add } from '@mui/icons-material';
 import { createUserPlaylist, fetchUserPlaylists } from '../../../../Store/userPlaylists';
-import favoritePlaylistImage from '../../../../assets/Images/likedSongs.png'
+import UserPlaylists from '../UserPlaylists/UserPlaylists';
+import { sidebarLabels } from '../../Data/SidebarData';
 
 
-const Navigation = ({ options }) => {
+
+const Navigation = () => {
+
+    const options = sidebarLabels.sidebarLabels.sidebarOptions;
 
     const user = useSelector(state => state.auth.user)
-    // const [userPlaylist, setuserPlaylist] = useState(null)
     const dispatch = useDispatch()
-    const userPlaylists = useSelector(state => state.userPlaylist.playlists);
-
-
-
-
-    useEffect(() => {
-        if (user) {
-            dispatch(fetchUserPlaylists(user?.id))
-
-        }
-    }, [dispatch, user])
 
 
     const AddUserPlaylist = () => {
@@ -82,20 +73,8 @@ const Navigation = ({ options }) => {
 
 
 
-            {userPlaylists && (
-                <div className={styles.userPlaylistWrapper}>
 
-                    <UserPlaylistCard name="Liked" favorites={true} image={favoritePlaylistImage} />
-
-                    {userPlaylists?.map((playlist) => {
-                        if (playlist?.type === "playlist") {
-                            return <UserPlaylistCard key={playlist.id} id={playlist.id} name={playlist.name} image={playlist.images[0]?.url} />
-                        }
-                    })}
-
-                </div>
-            )}
-
+            <UserPlaylists />
 
 
         </>

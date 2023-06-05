@@ -1,0 +1,12 @@
+.userPlaylistWrapper {
+  overflow-y: hidden;
+  max-height: 42vh;
+}
+
+.userPlaylistWrapper:hover {
+  overflow-y: auto;
+}
+
+.userPlaylistWrapper::-webkit-scrollbar {
+  width: 2px;
+}

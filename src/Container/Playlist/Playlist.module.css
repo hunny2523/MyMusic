@@ -28,7 +28,6 @@
 .tracksContainer {
   height: 82vh;
   overflow-y: auto;
-  flex: 1.5;
 }
 
 @media screen and (max-width: 1025px) {

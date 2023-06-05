@@ -32,7 +32,7 @@ const UserPlaylistCard = ({ name, image, id, favorites }) => {
                 <Avatar variant='rounded' className={styles.userPlaylistAvatar} src={image} />
                 <Typography noWrap>{name}</Typography>
             </div>
-            <IconButton onClick={deletePlaylist}>
+            <IconButton onClick={deletePlaylist} >
                 <DeleteOutline className="darkModeIcon" />
             </IconButton>
         </div>

@@ -1,19 +1,19 @@
 import * as React from 'react';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import { FavoriteBorderOutlined, HomeOutlined, NewReleasesOutlined, Settings } from '@mui/icons-material';
+import { FavoriteBorderOutlined, HomeOutlined, NewReleasesOutlined, Person, PersonOutline, Settings } from '@mui/icons-material';
 import { Link, useLocation } from 'react-router-dom';
 
 export default function NavbarFooter() {
     const location = useLocation()
     const [value, setValue] = React.useState('recents');
 
-    const handleChange = (event, newValue) => {
+    const handleChange = (newValue) => {
         setValue(newValue);
     };
 
     return (
-        <BottomNavigation sx={{ width: 500, backgroundColor: "var(--primary-color)", color: "var(--text-color)" }} value={location.pathname} onChange={handleChange} >
+        <BottomNavigation sx={{ width: "100%", position: "absolute", bottom: "0", backgroundColor: "var(--primary-color)", color: "var(--text-color)" }} value={location.pathname} onChange={handleChange} >
             <BottomNavigationAction
                 label="Home"
                 value="/"
@@ -31,17 +31,17 @@ export default function NavbarFooter() {
             />
             <BottomNavigationAction
                 label="Explore"
-                value="/explore"
+                value="/newReleases"
                 icon={<NewReleasesOutlined className='darkModeIcon' />}
                 component={Link}
-                to="/explore"
+                to="/newReleases"
             />
             <BottomNavigationAction
-                label="Settings"
-                value="/settings"
-                icon={<Settings className='darkModeIcon' />}
+                label="User"
+                value="/user"
+                icon={<PersonOutline className='darkModeIcon' />}
                 component={Link}
-                to="/settings"
+                to="/user"
             />
 
         </BottomNavigation>

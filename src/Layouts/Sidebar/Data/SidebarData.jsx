@@ -16,12 +16,12 @@ export const sidebarLabels = {
                 path: "/NewReleases",
                 icon: <NewReleasesOutlined className="darkModeIcon" />,
             },
-            {
-                id: 3,
-                name: "Recently Played",
-                path: "RecentlyPlayed",
-                icon: <AccessAlarmOutlined className="darkModeIcon" />,
-            },
+            // {
+            //     id: 3,
+            //     name: "Recently Played",
+            //     path: "RecentlyPlayed",
+            //     icon: <AccessAlarmOutlined className="darkModeIcon" />,
+            // },
             // {
             //     id: 4,
             //     name: "My PlayList",

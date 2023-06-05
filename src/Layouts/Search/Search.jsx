@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { spotifyApi } from '../../Services/spotify';
 import ShowCategory from '../../Components/ShowCategory/ShowCategory';
 import '../../assets/Styles/common.css'
@@ -9,6 +9,7 @@ import ShowAlbum from '../../Components/ShowAlbum/ShowAlbum';
 import TrackList from '../../Components/TrackList/TrackList';
 import { Grid } from '@mui/material';
 import ShowArtists from '../../Components/showArtists/ShowArtists';
+import { currentTrackActions } from '../../Store/CurrentTrackSlice';
 const Search = () => {
     const searchQuery = useSelector((state) => state.search.searchQuery);
     const categories = useSelector((state) => state.browse.categories);
@@ -35,11 +36,13 @@ const Search = () => {
         search();
     }, [searchQuery]);
 
-
+    const dispatch = useDispatch()
 
     const handleTrack = (id) => {
+        console.log("handle track");
         dispatch(currentTrackActions.addTrackId(id));
     }
+
     return (
         <>
             {data ? (

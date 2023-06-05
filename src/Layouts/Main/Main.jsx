@@ -13,12 +13,17 @@ import FeaturedPlaylist from '../../Components/FeaturedPlaylist/FeaturedPlaylist
 import Categories from '../../Components/Categories/Categories';
 import NewReleases from '../../Components/NewReleases/NewReleases';
 import Favorites from '../../Container/Favorites/Favorites';
+import User from '../../Components/User/User';
+import { useSelector } from 'react-redux';
 
 const Main = () => {
     const scrollableRef = useRef(null)
 
+    const currentTrack = useSelector((state) => state.currentTrack.trackID);
+
     return (
-        <div className={styles.mainContainer} ref={scrollableRef}>
+        <div className={`${styles.mainContainer} ${!currentTrack ? styles.regularHeight : styles.TrimHeight}`} ref={scrollableRef}>
+
             <Routes>
 
                 <Route path="/" element={<Home />} />
@@ -30,6 +35,7 @@ const Main = () => {
                 <Route path="/search" element={<Search />} />
                 <Route path="/category/:id" element={<Category />} />
                 <Route path="/favorites" element={<Favorites />} />
+                <Route path="/user" element={<User />} />
                 <Route path="*" element={<NotFound />} />
 
             </Routes>

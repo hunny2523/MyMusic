@@ -19,12 +19,6 @@ const TrackList = ({ data, handleTrack, image, searchTrack, params, fetchData })
     });
 
 
-    // useEffect(() => {
-    //     // Fetch favorites data and check if the track exists in the favorites list
-    //     const isTrackInFavorites = checkIfTrackExistsInFavorites(data.id);
-    //     setIsFavorite(isTrackInFavorites);
-    // }, [data.id]);
-
     const handleAddToFavorite = (e) => {
         e.stopPropagation();
         if (isFavorite) {
@@ -75,9 +69,9 @@ const TrackList = ({ data, handleTrack, image, searchTrack, params, fetchData })
                 <p >{formatDuration(data.duration_ms)} </p>
 
                 {isFavorite ? (
-                    <Favorite onClick={(e) => handleAddToFavorite(e)} />
+                    <Favorite onClick={(e) => handleAddToFavorite(e)} color='secondary' />
                 ) : (
-                    <FavoriteBorder onClick={(e) => handleAddToFavorite(e)} />
+                    <FavoriteBorder onClick={(e) => handleAddToFavorite(e)} color='secondary' />
                 )}
                 {searchTrack && <Button variant="contained" onClick={addTrackToPlaylist}>Add</Button>}
 
