@@ -19,7 +19,7 @@ const Player = () => {
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-    const token = useSelector((state) => state.auth.accessToken)
+
 
     const track = useSelector((state) => state.currentTrack.trackID);
     const [trackData, setTrackData] = useState(null);
@@ -51,7 +51,7 @@ const Player = () => {
         setAudio();
     }, [trackData]);
 
-    const handleSongEnded = async () => {
+    const handleSongEnded = () => {
         audioElement.currentTime = 0;
         audioElement.play();
     };

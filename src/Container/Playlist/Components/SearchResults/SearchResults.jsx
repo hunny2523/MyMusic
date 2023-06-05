@@ -7,7 +7,7 @@ import TrackList from '../../../../Components/TrackList/TrackList';
 import { currentTrackActions } from '../../../../Store/CurrentTrackSlice';
 import { useParams } from 'react-router-dom';
 
-const SearchResults = () => {
+const SearchResults = ({ setRender }) => {
     const params = useParams()
     const [searchTracks, setSearchTracks] = useState(null)
     const searchTrack = useSelector((state) => state.search.searchQuery);
@@ -22,7 +22,7 @@ const SearchResults = () => {
         console.log(searchTrack);
         if (searchTrack.trim() !== "") {
             async function getSearchTrack() {
-                const data = await spotifyApi.searchTracks(searchTrack, { limit: 5 });
+                const data = await spotifyApi.searchTracks(searchTrack, { limit: 1 });
                 setSearchTracks(data);
             }
             getSearchTrack();
@@ -36,7 +36,7 @@ const SearchResults = () => {
             searchTracks?.tracks?.items?.map((track) => {
                 return (
                     <React.Fragment key={track.id} >
-                        <TrackList data={track} handleTrack={handleTrack} searchTrack={true} params={params} />
+                        <TrackList data={track} handleTrack={handleTrack} searchTrack={true} params={params} setRender={setRender} />
                     </React.Fragment>
                 );
             })

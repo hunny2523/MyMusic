@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './ScrollToTop.module.css'
-import { ArrowCircleUp, ArrowUpward } from '@mui/icons-material';
+import { ArrowUpward } from '@mui/icons-material';
 
 const ScrollToTopButton = ({ scrollableRef }) => {
     const [isVisible, setIsVisible] = useState(false);
@@ -10,14 +10,14 @@ const ScrollToTopButton = ({ scrollableRef }) => {
         console.log(scrollTop > 200);
         setIsVisible(scrollTop > 200); // Show the button when scroll position is greater than 200p
     };
-    useEffect(() => {
-
-        scrollableRef.current.addEventListener('scroll', handleScroll);
-
-        return () => {
-            scrollableRef.current.removeEventListener('scroll', handleScroll);
-        };
-    }, [scrollableRef]);
+    // useEffect(() => {
+    //     if (scrollableRef) {
+    //         scrollableRef.current.addEventListener('scroll', handleScroll);
+    //         return () => {
+    //             scrollableRef.current.removeEventListener('scroll', handleScroll);
+    //         };
+    //     }
+    // }, [scrollableRef]);
 
     const scrollToTop = () => {
         scrollableRef.current.scrollTo({

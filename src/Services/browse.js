@@ -32,7 +32,7 @@ export const getFeaturedPlaylists = async () => {
         return response;
 
     } catch (error) {
-        console.error('Error occurred while fetching new releases:', error);
+        console.error('Error occurred while fetching featured playlists:', error);
     }
 };
 export const getCategories = async () => {
@@ -43,7 +43,7 @@ export const getCategories = async () => {
         return response.categories;
 
     } catch (error) {
-        console.error('Error occurred while fetching new releases:', error);
+        console.error('Error occurred while fetching categories:', error);
     }
 };
 export const getCategoryPlaylists = async (id) => {
@@ -53,7 +53,7 @@ export const getCategoryPlaylists = async (id) => {
         console.log(response);
 
     } catch (error) {
-        console.error('Error occurred while fetching new releases:', error);
+        console.error('Error occurred while fetching category playlist:', error);
     }
 };
 

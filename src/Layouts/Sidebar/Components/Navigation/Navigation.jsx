@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
     IconButton,
     List,
@@ -10,9 +10,8 @@ import {
 import styles from './Navigation.module.css';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import UserPlaylistCard from '../UserPlaylistCard/UserPlaylistCard';
 import { Add } from '@mui/icons-material';
-import { createUserPlaylist, fetchUserPlaylists } from '../../../../Store/userPlaylists';
+import { createUserPlaylist } from '../../../../Store/userPlaylists';
 import UserPlaylists from '../UserPlaylists/UserPlaylists';
 import { sidebarLabels } from '../../Data/SidebarData';
 
@@ -72,8 +71,6 @@ const Navigation = () => {
             </div>
 
 
-
-
             <UserPlaylists />
 
 
@@ -82,3 +79,5 @@ const Navigation = () => {
 };
 
 export default Navigation;
+
+

@@ -16,7 +16,7 @@ const App = () => {
 
 
   useEffect(() => {
-    console.log(accessToken);
+
     if (!accessToken) {
       const token = getAccessToken();
       if (token) {

@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react'
 import { useSelector } from 'react-redux'
 import Headings from '../Headings/Headings';
-import ShowAlbum from '../ShowAlbum/ShowAlbum';
+import ShowData from '../showData/ShowData';
+
 
 const NewReleases = ({ atHomePage }) => {
     const newReleases = useSelector(state => state.browse.newReleases);
@@ -13,7 +14,7 @@ const NewReleases = ({ atHomePage }) => {
                     <div className={atHomePage ? 'CardHorizontalContainer' : 'verticalCardWrapper'} >
                         {newReleases?.items?.map((album) => {
                             if (album.type === "album") {
-                                return <ShowAlbum key={album.id} data={album} />
+                                return <ShowData key={album.id} data={album} type="album" />
                             }
                         })}
                     </div>

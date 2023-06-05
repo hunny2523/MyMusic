@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { spotifyApi } from '../../Services/spotify';
-import ShowCategory from '../../Components/ShowCategory/ShowCategory';
 import '../../assets/Styles/common.css'
-import ShowPlaylist from '../../Components/ShowPlaylist/ShowPlaylist';
+
 import Headings from '../../Components/Headings/Headings';
-import ShowAlbum from '../../Components/ShowAlbum/ShowAlbum';
 import TrackList from '../../Components/TrackList/TrackList';
 import { Grid } from '@mui/material';
-import ShowArtists from '../../Components/showArtists/ShowArtists';
 import { currentTrackActions } from '../../Store/CurrentTrackSlice';
+import ShowData from '../../Components/showData/ShowData';
 const Search = () => {
     const searchQuery = useSelector((state) => state.search.searchQuery);
     const categories = useSelector((state) => state.browse.categories);
@@ -17,7 +15,7 @@ const Search = () => {
 
     useEffect(() => {
 
-        console.log("-----------------searchQuery" + searchQuery);
+
         async function search() {
             console.log("searchquery+" + searchQuery);
             if (searchQuery.trim() !== '') {
@@ -52,7 +50,7 @@ const Search = () => {
                         {
                             data?.playlists?.items.map((playlist) => {
                                 if (playlist.type === "playlist") {
-                                    return <ShowPlaylist key={playlist.id} data={playlist} />
+                                    return <ShowData key={playlist.id} data={playlist} type="playlist" />
                                 }
                             })
                         }
@@ -64,7 +62,7 @@ const Search = () => {
                         {
                             data?.albums?.items?.map((album) => {
                                 if (album.type === "album") {
-                                    return <ShowAlbum key={album.id} data={album} />
+                                    return <ShowData key={album.id} data={album} type="album" />
                                 }
                             })
                         }
@@ -91,7 +89,7 @@ const Search = () => {
                             <div className="verticalCardWrapper" style={{ height: "50vh", overflow: "auto" }}>
                                 {
                                     data?.artists?.items.map((artist) => {
-                                        return <ShowArtists key={artist.id} data={artist} />
+                                        return <ShowData key={artist.id} data={artist} type="artist" />
                                     })
                                 }
                             </div>
@@ -106,9 +104,11 @@ const Search = () => {
 
             ) : (
                 <div className="verticalCardWrapper">
-                    {categories?.items?.map((category) => {
-                        return <ShowCategory key={category.id} data={category} />
-                    })}
+                    {
+                        categories?.items?.map((category) => {
+                            return <ShowData key={category.id} data={category} type="category" />
+                        })
+                    }
                 </div>
             )
             }

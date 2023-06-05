@@ -3,12 +3,13 @@ import { useLocation, useParams } from 'react-router-dom'
 import { spotifyApi } from '../../Services/spotify';
 import '../../assets/Styles/common.css'
 import styles from './Playlist.module.css'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { currentTrackActions } from '../../Store/CurrentTrackSlice';
 import styled from '@emotion/styled'
 import TrackList from '../../Components/TrackList/TrackList';
 import SearchTrack from './Components/SearchTrack/SearchTrack';
 import SearchResults from './Components/SearchResults/SearchResults';
+import { userPlaylistsActions } from '../../Store/userPlaylists';
 
 
 
@@ -22,7 +23,9 @@ const Playlist = () => {
 
     const ref = useRef(null);
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const [render, setRender] = useState(false)
+
 
     const handleTrack = (id) => {
         console.log("clicked" + id);
@@ -46,7 +49,7 @@ const Playlist = () => {
 
     useEffect(() => {
         fetchData();
-    }, [params])
+    }, [params, render])
 
 
     const Container = styled.div`
@@ -83,18 +86,20 @@ const Playlist = () => {
 
 
 
-                    {state && <SearchResults />}
+                    {state && <SearchResults setRender={setRender} />}
 
 
                     <div className={styles.tracksContainer} ref={ref}>
 
-                        {data?.tracks?.items?.map((track) => {
-                            return (
-                                <React.Fragment key={track.track.id} >
-                                    <TrackList data={track.track} handleTrack={handleTrack} fetchData={fetchData} />
-                                </React.Fragment>
-                            );
-                        })}
+                        {
+                            data?.tracks?.items?.map((track) => {
+                                return (
+                                    <React.Fragment key={track.track.id} >
+                                        <TrackList data={track.track} handleTrack={handleTrack} />
+                                    </React.Fragment>
+                                );
+                            })
+                        }
 
                     </div>
 
