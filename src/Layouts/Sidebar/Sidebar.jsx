@@ -7,12 +7,12 @@ import { sidebarLabels } from './Data/SidebarData'
 import { useSelector } from 'react-redux'
 
 const Sidebar = () => {
-    const currentTrack = useSelector((state) => state.currentTrack.trackID);
+
 
     const footerText = sidebarLabels.sidebarLabels.siderbarFooter;
 
     return (
-        <div className={`${styles.sidebar} ${!currentTrack ? styles.regularHeight : styles.TrimHeight}`}>
+        <div className={`${styles.sidebar} `}>
             <Profile />
             <Navigation />
             <Typography variant="caption" className={styles.footerText}>

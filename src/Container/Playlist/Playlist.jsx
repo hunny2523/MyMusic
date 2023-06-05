@@ -9,10 +9,6 @@ import styled from '@emotion/styled'
 import TrackList from '../../Components/TrackList/TrackList';
 import SearchTrack from './Components/SearchTrack/SearchTrack';
 import SearchResults from './Components/SearchResults/SearchResults';
-import { userPlaylistsActions } from '../../Store/userPlaylists';
-
-
-
 
 
 
@@ -20,22 +16,11 @@ const Playlist = () => {
 
     const location = useLocation()
     const state = location.state;
+    const dispatch = useDispatch();
 
     const ref = useRef(null);
 
-    const dispatch = useDispatch();
     const [render, setRender] = useState(false)
-
-
-    const handleTrack = (id) => {
-        console.log("clicked" + id);
-
-        dispatch(currentTrackActions.addTrackId(id));
-        ref.current.scrollIntoView({ behavior: 'smooth' });
-    }
-
-
-
 
     const params = useParams();
 
@@ -45,11 +30,26 @@ const Playlist = () => {
         const playlistData = await spotifyApi.getPlaylist(params.id);
         setdata(playlistData);
         console.log(playlistData);
+        console.log("fetched data again");
     };
 
     useEffect(() => {
         fetchData();
     }, [params, render])
+
+    let playlistTrackIDQueue;
+
+    if (data) {
+        playlistTrackIDQueue = data?.tracks?.items?.map(track => track.track.id)
+        console.log(playlistTrackIDQueue);
+    }
+
+    const handleTrack = (id) => {
+        console.log("clicked" + id);
+        dispatch(currentTrackActions.addTrackQueue(playlistTrackIDQueue))
+        dispatch(currentTrackActions.addTrackId(id));
+        ref.current.scrollIntoView({ behavior: 'smooth' });
+    }
 
 
     const Container = styled.div`
@@ -102,8 +102,6 @@ const Playlist = () => {
                         }
 
                     </div>
-
-
 
                 </div>
             )}

@@ -13,15 +13,6 @@ const Album = () => {
     const ref = useRef(null);
 
     const dispatch = useDispatch()
-
-    const handleTrack = (id) => {
-        console.log("clicked" + id);
-        dispatch(currentTrackActions.addTrackId(id));
-        ref.current.scrollIntoView({ behavior: 'smooth' });
-    }
-
-
-
     const params = useParams();
 
     const [data, setdata] = useState(null)
@@ -37,6 +28,15 @@ const Album = () => {
 
     }, [])
 
+    let albumTracksQueue;
+    if (data) {
+        albumTracksQueue = data.tracks.items.map(track => track.id)
+    }
+    const handleTrack = (id) => {
+        dispatch(currentTrackActions.addTrackQueue(albumTracksQueue))
+        dispatch(currentTrackActions.addTrackId(id));
+        ref.current.scrollIntoView({ behavior: 'smooth' });
+    }
 
 
     return (

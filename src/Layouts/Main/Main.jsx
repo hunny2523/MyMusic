@@ -3,15 +3,14 @@ import '../../assets/Styles/common.css'
 import { Route, Routes } from 'react-router-dom';
 import styles from './Main.module.css'
 import ScrollToTopButton from '../ScrollToTop/ScrollToTop';
-import { useSelector } from 'react-redux';
 import routesData from '../../Routes/routes';
 
 const Main = () => {
     const scrollableRef = useRef(null)
-    const currentTrack = useSelector((state) => state.currentTrack.trackID);
+    // const currentTrack = useSelector((state) => state.currentTrack.trackID);
 
     return (
-        <div className={`${styles.mainContainer} ${!currentTrack ? styles.regularHeight : styles.TrimHeight}`} ref={scrollableRef}>
+        <div className={`${styles.mainContainer}`} ref={scrollableRef}>
 
             <Routes>
                 {routesData.map((route, index) => (
