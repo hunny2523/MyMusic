@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {
     IconButton,
     List,
@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import UserPlaylistCard from '../UserPlaylistCard/UserPlaylistCard';
 import { Add } from '@mui/icons-material';
 import { createUserPlaylist, fetchUserPlaylists } from '../../../../Store/userPlaylists';
+import favoritePlaylistImage from '../../../../assets/Images/likedSongs.png'
 
 
 const Navigation = ({ options }) => {
@@ -25,15 +26,16 @@ const Navigation = ({ options }) => {
 
 
 
+
     useEffect(() => {
         if (user) {
             dispatch(fetchUserPlaylists(user?.id))
+
         }
     }, [dispatch, user])
 
 
     const AddUserPlaylist = () => {
-        console.log("here");
         if (user) {
             console.log(user);
             dispatch(createUserPlaylist(user.id))
@@ -77,8 +79,13 @@ const Navigation = ({ options }) => {
                     <Add className="darkModeIcon" />
                 </IconButton>
             </div>
+
+
+
             {userPlaylists && (
                 <div className={styles.userPlaylistWrapper}>
+
+                    <UserPlaylistCard name="Liked" favorites={true} image={favoritePlaylistImage} />
 
                     {userPlaylists?.map((playlist) => {
                         if (playlist?.type === "playlist") {
@@ -88,6 +95,7 @@ const Navigation = ({ options }) => {
 
                 </div>
             )}
+
 
 
         </>

@@ -34,7 +34,7 @@
   align-items: center;
   flex: 2;
 }
-.DurationFavouriteWrapper {
+.DurationFavoriteWrapper {
   flex: 1;
   display: flex;
   justify-content: space-around;
@@ -67,10 +67,10 @@
   .AvtarNameWrapper {
     flex: 2.5;
   }
-  .DurationFavouriteWrapper {
+  .DurationFavoriteWrapper {
     flex: 0.5;
   }
-  .DurationFavouriteWrapper p {
+  .DurationFavoriteWrapper p {
     display: none;
   }
 }

@@ -12,6 +12,7 @@ import ScrollToTopButton from '../ScrollToTop/ScrollToTop';
 import FeaturedPlaylist from '../../Components/FeaturedPlaylist/FeaturedPlaylist';
 import Categories from '../../Components/Categories/Categories';
 import NewReleases from '../../Components/NewReleases/NewReleases';
+import Favorites from '../../Container/Favorites/Favorites';
 
 const Main = () => {
     const scrollableRef = useRef(null)
@@ -28,6 +29,7 @@ const Main = () => {
                 <Route path="/album/:id" element={<Album />} />
                 <Route path="/search" element={<Search />} />
                 <Route path="/category/:id" element={<Category />} />
+                <Route path="/favorites" element={<Favorites />} />
                 <Route path="*" element={<NotFound />} />
 
             </Routes>

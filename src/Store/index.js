@@ -4,6 +4,7 @@ import browseReducer from './browseSlice';
 import currentTrackReducer from './CurrentTrackSlice'
 import searchReducer from './SearchSlice'
 import userPlaylistReducer from './userPlaylists'
+import favoritesReducer from './Favorites';
 
 const store = configureStore({
     reducer: {
@@ -11,7 +12,8 @@ const store = configureStore({
         browse: browseReducer,
         currentTrack: currentTrackReducer,
         search: searchReducer,
-        userPlaylist: userPlaylistReducer
+        userPlaylist: userPlaylistReducer,
+        favorites: favoritesReducer
     },
 });
 

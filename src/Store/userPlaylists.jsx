@@ -7,8 +7,6 @@ import { CreateUserPlaylists, DeleteUserPlaylist, getUserPlaylists } from '../Se
 export const fetchUserPlaylists = createAsyncThunk(
     'userPlaylists/fetchUserPlaylists',
     async (userId) => {
-        console.log("helllllllll");
-        console.log(userId);
         const response = await getUserPlaylists(userId);
         console.log(response);
         return response.items;

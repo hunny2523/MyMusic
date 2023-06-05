@@ -13,8 +13,9 @@ const scopes = [
     "user-modify-playback-state",
     "playlist-modify-private",
     "playlist-read-private",
-    "playlist-modify-public"
-
+    "playlist-modify-public",
+    "user-library-modify",
+    "user-library-read"
 ];
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 

@@ -11,6 +11,10 @@
   display: none;
 }
 
+.p-1 {
+  padding: 1em;
+}
+
 /*
 .CardHorizontalContainer:hover {
   overflow-x: auto;
