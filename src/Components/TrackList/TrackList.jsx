@@ -76,6 +76,7 @@ const TrackList = ({ data, handleTrack, image, searchTrack, params, fetchData })
                 ) : (
                     <FavoriteBorder onClick={(e) => handleAddToFavorite(e)} color='secondary' />
                 )}
+
                 {searchTrack && <Button variant="contained" onClick={addTrackToPlaylist}>Add</Button>}
 
             </div>

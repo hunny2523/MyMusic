@@ -23,12 +23,12 @@ const Profile = () => {
                     {user.image &&
                         <Avatar
                             alt="Remy Sharp"
-                            src={user.image[0].url}
+                            src={user?.image[0]?.url}
                             sx={{ width: 80, height: 80, boxShadow: 4 }}
                         />
                     }
                     <Typography variant="body" padding="10px" fontWeight="bold" color="gray">
-                        {user.name}
+                        {user?.name}
                     </Typography>
                 </Box>
             }

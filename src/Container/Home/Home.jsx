@@ -2,16 +2,19 @@ import React from 'react'
 import Categories from '../../Components/Categories/Categories'
 import FeaturedPlaylist from '../../Components/FeaturedPlaylist/FeaturedPlaylist'
 import NewReleases from '../../Components/NewReleases/NewReleases'
+import { useSelector } from 'react-redux'
+import { SyncLoader } from 'react-spinners'
 
 
 const Home = () => {
-
+    const loading = useSelector(state => state.browse.loading)
     return (
-        <>
-            <Categories atHomePage="true" />
-            <FeaturedPlaylist atHomePage="true" />
-            <NewReleases atHomePage="true" />
-        </>
+        loading ? <SyncLoader className='loading-component' color='orange' /> :
+            <>
+                <Categories atHomePage="true" />
+                <FeaturedPlaylist atHomePage="true" />
+                <NewReleases atHomePage="true" />
+            </>
     )
 }
 
