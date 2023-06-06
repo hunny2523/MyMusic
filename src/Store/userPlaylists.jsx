@@ -16,9 +16,8 @@ export const fetchUserPlaylists = createAsyncThunk(
 // Create a new user playlist
 export const createUserPlaylist = createAsyncThunk(
     'userPlaylists/createUserPlaylist',
-    async (userID) => {
-
-        const response = await CreateUserPlaylists(userID);
+    async (userArr) => {
+        const response = await CreateUserPlaylists(userArr);
         return response;
     }
 );
@@ -45,10 +44,15 @@ const userPlaylistsSlice = createSlice({
     name: 'userPlaylists',
     initialState: {
         playlists: [],
+        openModal: false,
         loading: false,
         error: null,
     },
-    reducers: {},
+    reducers: {
+        ToggleModal: (state) => {
+            state.openModal = !state.openModal
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchUserPlaylists.pending, (state) => {

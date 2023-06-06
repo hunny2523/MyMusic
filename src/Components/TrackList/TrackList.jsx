@@ -8,7 +8,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addTrackToFavorite, removeTrackFromFavourties } from '../../Store/Favorites'
 
-const TrackList = ({ data, handleTrack, image, searchTrack, params, setRender }) => {
+const TrackList = ({ data, handleTrack, image, searchTrack, params, fetchData }) => {
 
     const dispatch = useDispatch();
 
@@ -32,10 +32,13 @@ const TrackList = ({ data, handleTrack, image, searchTrack, params, setRender })
 
 
     const addTrackToPlaylist = async (e) => {
+        console.log("clicked");
         e.stopPropagation();
         if (params) {
+            console.log("fetched");
             await spotifyApi.addTracksToPlaylist(params.id, [data.uri]);
-            setRender(true);
+            console.log(fetchData);
+            fetchData();
 
         }
     }

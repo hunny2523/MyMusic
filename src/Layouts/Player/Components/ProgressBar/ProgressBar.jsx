@@ -8,12 +8,11 @@ const ProgressBar = () => {
         const interval = setInterval(() => {
 
             const currentTime = audioElement.currentTime;
-            console.log(currentTime);
-            const calculatedProgress = (currentTime / 30)
+            const calculatedProgress = (currentTime / 30) * 100
             //     clearInterval(interval);
-
+            setProgress(calculatedProgress)
             // }
-        }, 1000); // Update progress every second
+        }, 100); // Update progress every second
 
         return () => {
             clearInterval(interval); // Clear the interval on component unmount

@@ -13,12 +13,13 @@ export const getUserPlaylists = async (userId) => {
 };
 
 
-export const CreateUserPlaylists = async (userId) => {
+export const CreateUserPlaylists = async ([userId, name, description]) => {
     try {
         if (userId) {
+
             const playlist = await spotifyApi.createPlaylist(userId, {
-                "name": "New Playlist",
-                "description": "New playlist description",
+                "name": name,
+                "description": description,
                 "public": false
             });
             console.log(playlist);

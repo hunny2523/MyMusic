@@ -7,7 +7,6 @@ import routesData from '../../Routes/routes';
 
 const Main = () => {
     const scrollableRef = useRef(null)
-    // const currentTrack = useSelector((state) => state.currentTrack.trackID);
 
     return (
         <div className={`${styles.mainContainer}`} ref={scrollableRef}>

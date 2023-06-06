@@ -33,7 +33,7 @@ const Body = () => {
     const { theme } = useContext(ThemeContext);
 
     return (
-        loading ? <DotLoader /> :
+        loading ? <DotLoader className="loading-component" /> :
 
             <Grid container direction="row" height="100vh" className={`container ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
                 <Hidden smDown>

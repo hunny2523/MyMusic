@@ -9,11 +9,14 @@ const Favorites = () => {
 
     const dispatch = useDispatch()
 
-    const handleTrack = (id) => {
-        dispatch(currentTrackActions.addTrackId(id));
-    }
 
     const favoritesTracks = useSelector(state => state.favorites.favoriteTracks)
+    const TrackIdsQueue = favoritesTracks.map((tarck) => tarck.id)
+
+    const handleTrack = (id) => {
+        dispatch(currentTrackActions.addTrackId(id));
+        dispatch(currentTrackActions.addTrackQueue(TrackIdsQueue));
+    }
 
     return (
         favoritesTracks && (

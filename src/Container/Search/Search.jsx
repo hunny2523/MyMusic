@@ -36,9 +36,15 @@ const Search = () => {
 
     const dispatch = useDispatch()
 
+    let TrackIdsQueue;
+    if (data) {
+        TrackIdsQueue = data?.tracks?.items?.map(track => track.id)
+    }
     const handleTrack = (id) => {
         console.log("handle track");
         dispatch(currentTrackActions.addTrackId(id));
+        dispatch(currentTrackActions.addTrackQueue(TrackIdsQueue));
+
     }
 
     return (
