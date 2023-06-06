@@ -73,3 +73,7 @@
     padding-left: 1em;
   }
 }
+.loading-component {
+  margin: auto;
+  margin-top: 45vh;
+}

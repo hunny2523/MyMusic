@@ -2,14 +2,14 @@ import { spotifyApi } from "./spotify"
 
 
 
-export const getNextPage = async (nextUrl) => {
-    try {
-        const response = await spotifyApi.getGeneric(nextUrl);
-        console.log(response);
-    } catch (error) {
-        console.error('Error occurred while fetching the next page:', error);
-    }
-};
+// export const getNextPage = async (nextUrl) => {
+//     try {
+//         const response = await spotifyApi.getGeneric(nextUrl);
+//         console.log(response);
+//     } catch (error) {
+//         console.error('Error occurred while fetching the next page:', error);
+//     }
+// };
 
 
 

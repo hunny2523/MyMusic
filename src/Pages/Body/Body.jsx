@@ -18,7 +18,6 @@ const Body = () => {
     const dispatch = useDispatch()
     const loading = useSelector(state => state.auth.loading)
     const user = useSelector(state => state.auth.user)
-    // const track = useSelector((state) => state.currentTrack.trackID);
 
     useEffect(() => {
         if (user) {
@@ -28,12 +27,12 @@ const Body = () => {
             dispatch(fetchFavoriteTracks());
             dispatch(fetchUserPlaylists(user?.id))
         }
-    }, [dispatch, user])
+    }, [user])
 
     const { theme } = useContext(ThemeContext);
 
     return (
-        loading ? <DotLoader /> :
+        loading ? <DotLoader className="loading-component" color='orange' /> :
 
             <Grid container direction="row" height="100vh" className={`container ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
                 <Hidden smDown>

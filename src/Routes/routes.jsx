@@ -1,14 +1,16 @@
-import Categories from "../Components/Categories/Categories";
-import FeaturedPlaylist from "../Components/FeaturedPlaylist/FeaturedPlaylist";
-import NewReleases from "../Components/NewReleases/NewReleases";
-import User from "../Components/User/User";
-import Album from "../Container/Album/Album";
-import Category from "../Container/Category/Category";
-import Favorites from "../Container/Favorites/Favorites";
+import React, { lazy } from "react";
+const Categories = lazy(() => import("../Components/Categories/Categories"));
+const FeaturedPlaylist = lazy(() => import("../Components/FeaturedPlaylist/FeaturedPlaylist"));
+const NewReleases = lazy(() => import("../Components/NewReleases/NewReleases"));
+const User = lazy(() => import("../Components/User/User"));
+const Album = lazy(() => import("../Container/Album/Album"));
+const Category = lazy(() => import("../Container/Category/Category"));
+const Favorites = lazy(() => import("../Container/Favorites/Favorites"));
 import Home from "../Container/Home/Home";
-import NotFound from "../Container/NotFound/NotFound";
-import Playlist from "../Container/Playlist/Playlist";
-import Search from "../Container/Search/Search";
+const Artist = lazy(() => import("../Container/Artist/Artist"));
+const NotFound = lazy(() => import("../Container/NotFound/NotFound"));
+const Playlist = lazy(() => import("../Container/Playlist/Playlist"));
+const Search = lazy(() => import("../Container/Search/Search"));
 
 
 
@@ -52,6 +54,10 @@ const routesData = [
     {
         path: '/user',
         component: <User />
+    },
+    {
+        path: '/artist/:id',
+        component: <Artist />
     },
     {
         path: '*',

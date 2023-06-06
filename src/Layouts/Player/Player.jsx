@@ -74,6 +74,7 @@ const Player = () => {
     };
 
     const playNext = async () => {
+        console.log("next");
         dispatch(currentTrackActions.setNextTrack());
     };
 

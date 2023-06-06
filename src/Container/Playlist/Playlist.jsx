@@ -20,8 +20,6 @@ const Playlist = () => {
 
     const ref = useRef(null);
 
-    const [render, setRender] = useState(false)
-
     const params = useParams();
 
     const [data, setdata] = useState(null)
@@ -35,7 +33,7 @@ const Playlist = () => {
 
     useEffect(() => {
         fetchData();
-    }, [params, render])
+    }, [params])
 
     let playlistTrackIDQueue;
 
@@ -50,6 +48,7 @@ const Playlist = () => {
         dispatch(currentTrackActions.addTrackId(id));
         ref.current.scrollIntoView({ behavior: 'smooth' });
     }
+
 
 
     const Container = styled.div`
@@ -86,7 +85,7 @@ const Playlist = () => {
 
 
 
-                    {state && <SearchResults setRender={setRender} />}
+                    {state && <SearchResults fetchData={fetchData} />}
 
 
                     <div className={styles.tracksContainer} ref={ref}>

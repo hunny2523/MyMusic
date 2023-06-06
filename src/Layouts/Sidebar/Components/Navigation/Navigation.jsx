@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     IconButton,
     List,
@@ -11,10 +11,10 @@ import styles from './Navigation.module.css';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Add } from '@mui/icons-material';
-import { createUserPlaylist } from '../../../../Store/userPlaylists';
+import { createUserPlaylist, userPlaylistsActions } from '../../../../Store/userPlaylists';
 import UserPlaylists from '../UserPlaylists/UserPlaylists';
 import { sidebarLabels } from '../../Data/SidebarData';
-
+import CreatePlaylistModal from '../CreatePlaylistModal/CreatePlaylistModal'
 
 
 const Navigation = () => {
@@ -26,10 +26,7 @@ const Navigation = () => {
 
 
     const AddUserPlaylist = () => {
-        if (user) {
-            console.log(user);
-            dispatch(createUserPlaylist(user.id))
-        }
+        dispatch(userPlaylistsActions.ToggleModal())
     }
 
     return (
@@ -69,8 +66,7 @@ const Navigation = () => {
                     <Add className="darkModeIcon" />
                 </IconButton>
             </div>
-
-
+            <CreatePlaylistModal />
             <UserPlaylists />
 
 

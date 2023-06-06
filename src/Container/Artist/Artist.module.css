@@ -1,0 +1,66 @@
+.tracksListContainer {
+  overflow-y: auto;
+  padding: 1em;
+  height: 81vh;
+  /* height: 70%; */
+}
+
+/* .AlbumTextWrapper {
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 3em;
+} */
+.playlistNameHeading {
+  font-size: 2em;
+}
+
+/* .AlbumTextWrapper h3 {
+  font-weight: normal;
+} */
+
+.ImgWrapper {
+  position: relative;
+  /* height: 0vh; */
+  max-height: 81vh;
+  margin: 2em;
+}
+
+.ImgWrapper::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    var(--secondary-color) 0%,
+    rgba(255, 255, 255, 0) 69%
+  );
+}
+.ImageTextWrapper {
+  position: relative;
+}
+.ArtistTextWrapper {
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+/* @media screen and (max-width: 1025px) {
+  .AlbumTextWrapper {
+    height: max-content;
+    display: "block";
+    padding-top: 0;
+    margin-inline: 1.5em;
+  }
+  .tracksListContainer {
+    height: max-content;
+  }
+  .playlistNameHeading {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+  }
+} */
