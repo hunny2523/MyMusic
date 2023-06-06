@@ -18,8 +18,7 @@ const Body = () => {
     const dispatch = useDispatch()
     const loading = useSelector(state => state.auth.loading)
     const user = useSelector(state => state.auth.user)
-    const track = useSelector((state) => state.currentTrack.trackID);
-
+    // const track = useSelector((state) => state.currentTrack.trackID);
 
     useEffect(() => {
         if (user) {
@@ -49,9 +48,7 @@ const Body = () => {
                 <Hidden smUp>
                     <NavbarFooter />
                 </Hidden>
-                {track &&
-                    <Player />
-                }
+                <Player />
             </Grid>
 
 

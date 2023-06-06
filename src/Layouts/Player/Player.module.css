@@ -10,6 +10,14 @@
   padding-inline: 1em;
   box-shadow: -1px 0px 3px 4px var(--secondary-color);
 }
+
+/* .hide {
+  display: none;
+}
+.show {
+  display: flex;
+} */
+
 .playerContainer div {
   align-items: center;
 }

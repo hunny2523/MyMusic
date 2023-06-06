@@ -5,7 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FavoriteBorder, PauseCircleOutline } from '@mui/icons-material';
 import { audioElement } from '../../App';
 import styles from './Player.module.css';
@@ -14,46 +14,46 @@ import { formatDuration } from '../../Utils/Helper';
 import ProgressBar from './Components/ProgressBar/ProgressBar';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { currentTrackActions } from '../../Store/CurrentTrackSlice';
 
 const Player = () => {
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
+    const dispatch = useDispatch();
 
     const track = useSelector((state) => state.currentTrack.trackID);
-    const [trackData, setTrackData] = useState(null);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [trackData, setTrackData] = useState(null);
 
-    const setAudio = () => {
-        audioElement.src = trackData?.preview_url;
-        audioElement.addEventListener('ended', handleSongEnded);
-        audioElement.play();
-        setIsPlaying(true);
-
-    };
 
     useEffect(() => {
         async function fetchSong() {
-            console.log(track);
-            const trackData = await spotifyApi.getTrack(track);
-            console.log(trackData);
-            setTrackData(trackData);
+            if (track) {
+                const trackData = await spotifyApi.getTrack(track);
+                if (trackData) {
+                    audioElement.src = trackData?.preview_url;
+                    audioElement.addEventListener('ended', handleSongEnded);
+                    audioElement.play();
+                    setTrackData(trackData);
+                    setIsPlaying(true);
+                }
+            }
         }
         fetchSong();
         return () => {
+            audioElement.removeEventListener('ended', handleSongEnded);
             audioElement.pause();
             audioElement.src = null;
         };
     }, [track]);
 
-    useEffect(() => {
-        setAudio();
-    }, [trackData]);
 
     const handleSongEnded = () => {
-        audioElement.currentTime = 0;
-        audioElement.play();
+        // audioElement.pause();
+        console.log("song ended event");
+        audioElement.src = null;
+        dispatch(currentTrackActions.setNextTrack());
     };
 
 
@@ -69,18 +69,18 @@ const Player = () => {
     };
 
     const playPrevious = async () => {
-        const res = await spotifyApi.skipToPrevious();
-        console.log(res);
+        dispatch(currentTrackActions.setPrevTrack());
+
     };
 
     const playNext = async () => {
-        const res = await spotifyApi.skipToNext();
-        console.log(res);
+        console.log("next");
+        dispatch(currentTrackActions.setNextTrack());
     };
 
     return (
         trackData && (
-            <Box className={styles.playerContainer}>
+            <Box className={`${styles.playerContainer} ${!track ? styles.hide : styles.show}`}>
                 <div className={styles.AvtarNameWrapper}>
 
                     <Avatar alt={trackData.name} variant="square" src={trackData?.album?.images[0]?.url} className={styles.PlayerImg} />

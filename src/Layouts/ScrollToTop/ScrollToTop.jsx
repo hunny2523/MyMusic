@@ -10,14 +10,17 @@ const ScrollToTopButton = ({ scrollableRef }) => {
         console.log(scrollTop > 200);
         setIsVisible(scrollTop > 200); // Show the button when scroll position is greater than 200p
     };
-    // useEffect(() => {
-    //     if (scrollableRef) {
-    //         scrollableRef.current.addEventListener('scroll', handleScroll);
-    //         return () => {
-    //             scrollableRef.current.removeEventListener('scroll', handleScroll);
-    //         };
-    //     }
-    // }, [scrollableRef]);
+    useEffect(() => {
+        if (scrollableRef.current) {
+            scrollableRef.current.addEventListener('scroll', handleScroll);
+        }
+        return () => {
+            if (scrollableRef.current) {
+                scrollableRef.current.removeEventListener('scroll', handleScroll);
+            }
+        };
+    }, [scrollableRef]);
+
 
     const scrollToTop = () => {
         scrollableRef.current.scrollTo({
